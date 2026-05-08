@@ -5,17 +5,14 @@ import '@/../sass/main.scss'
 export const metadata: Metadata = {
   title: 'Nicoo | Portfolio',
   description:
-    "Nicoo c'est qui ? Découvrez le portfolio de Nicolas Osborne, Développeur Front-End et Intégrateur Web à Grenoble.",
+    "Nicoo c'est qui ? Découvrez le portfolio de Nicolas Osborne, Développeur Front-End à Grenoble.",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: ReactNode
-}>) {
-  const lang = 'fr'
+}: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body>{children}</body>
     </html>
   )

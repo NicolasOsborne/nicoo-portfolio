@@ -89,7 +89,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       login,
       logout,
     }),
-    [user, login, logout]
+    [user, login, logout],
   )
 
   if (!isReady) return null
@@ -100,7 +100,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 export default AuthProvider
 
 export const useAuth = () => {
-  const ctx = useContext(AuthContext)
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider')
-  return ctx
+  const context = useContext(AuthContext)
+  if (!context) throw new Error('useAuth must be used within AuthProvider')
+  return context
 }

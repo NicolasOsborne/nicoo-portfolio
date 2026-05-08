@@ -3,13 +3,11 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useState,
   FC,
   ReactNode,
 } from 'react'
-import { usePathname } from 'next/navigation'
 import { Content, Locale } from '@/types/contentType'
 import { getContent, i18nConfig } from '@/utils/i18n/i18n'
 
@@ -26,30 +24,24 @@ type ContentProviderProps = {
   initialLocale: Locale
 }
 
-const ContentProvider: FC<ContentProviderProps> = ({
-  children,
-  initialLocale,
-}) => {
-  const pathname = usePathname()
-  const [locale, setLocale] = useState<Locale>(initialLocale)
+const ContentProvider: FC<ContentProviderProps> = (props) => {
+  const { children, initialLocale } = props
+
+  const [locale, setLocaleState] = useState<Locale>(initialLocale)
   const [content, setContent] = useState<Content>(() =>
-    getContent(initialLocale)
+    getContent(initialLocale),
   )
 
-  useEffect(() => {
-    const match = pathname.match(/^\/(en|fr)/)
-    const urlLocale = (match?.[1] as Locale) || i18nConfig.defaultLocale
-
-    if (urlLocale !== locale) {
-      setLocale(urlLocale)
-      setContent(getContent(urlLocale))
-      document.documentElement.lang = urlLocale
-    }
-  }, [pathname])
+  const setLocale = (next: Locale) => {
+    if (!i18nConfig.locales.includes(next)) return
+    setLocaleState(next)
+    setContent(getContent(next))
+    document.documentElement.lang = next
+  }
 
   const value = useMemo(
     () => ({ content, locale, setLocale }),
-    [content, locale]
+    [content, locale],
   )
 
   return (
@@ -60,7 +52,8 @@ const ContentProvider: FC<ContentProviderProps> = ({
 export default ContentProvider
 
 export const useContent = () => {
-  const ctx = useContext(ContentContext)
-  if (!ctx) throw new Error('useContent must be used within ContentProvider')
-  return ctx
+  const context = useContext(ContentContext)
+  if (!context)
+    throw new Error('useContent must be used within ContentProvider')
+  return context
 }

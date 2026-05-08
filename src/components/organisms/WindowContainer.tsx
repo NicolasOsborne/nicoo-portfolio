@@ -3,11 +3,11 @@
 import { FC, useRef, useState } from 'react'
 import { useWindows, OpenWindow } from '@/context/WindowContext'
 
-import AboutWindow from '@/components/templates/AboutWindow'
-import SkillsWindow from '@/components/templates/SkillsWindow'
-import ProjectsWindow from '@/components/templates/ProjectsWindow'
-import ExperienceWindow from '@/components/templates/ExperiencesWindow'
-import ContactWindow from '@/components/templates/ContactWindow'
+import AboutWindow from '@/components/organisms/window/AboutWindow'
+import SkillsWindow from '@/components/organisms/window/SkillsWindow'
+import ProjectsWindow from '@/components/organisms/window/ProjectsWindow'
+import ExperienceWindow from '@/components/organisms/window/ExperiencesWindow'
+import ContactWindow from '@/components/organisms/window/ContactWindow'
 import ControlType from '@/enums/ControlType'
 import Window from '@/components/molecules/Window'
 
@@ -32,7 +32,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   // Coordinates for window drag and drop
   const getCoords = (
-    event: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent
+    event: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent,
   ) => {
     if ('touches' in event) {
       return {
@@ -73,7 +73,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
     moveWindow(
       windowData.id,
       clientX - dragOffset.current.x,
-      clientY - dragOffset.current.y
+      clientY - dragOffset.current.y,
     )
   }
 
@@ -109,7 +109,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
     moveWindow(
       windowData.id,
       clientX - dragOffset.current.x,
-      clientY - dragOffset.current.y
+      clientY - dragOffset.current.y,
     )
   }
 
@@ -138,7 +138,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   const handleMinimize = () => {
     const taskItem = document.querySelector(
-      `[data-window-id="${windowData.id}"]`
+      `[data-window-id="${windowData.id}"]`,
     )
     if (!taskItem || !ref.current) {
       minimizeWindow(windowData.id)
@@ -167,7 +167,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   const handleRestore = () => {
     const taskItem = document.querySelector(
-      `[data-window-id="${windowData.id}"]`
+      `[data-window-id="${windowData.id}"]`,
     )
     if (!taskItem || !ref.current) {
       restoreWindow(windowData.id)
