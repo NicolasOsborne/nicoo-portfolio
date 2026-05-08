@@ -1,0 +1,28 @@
+@use '../Settings/variables' as *;
+@use '../Tools/typography';
+
+html,
+body {
+   height: 100vh;
+   width: 100vw;
+}
+
+body {
+   @include typography.body;
+   margin: 0;
+   padding: 0;
+   color: $text-color;
+   font-family: $font-text;
+   font-weight: 500;
+   -webkit-font-smoothing: none;
+   -moz-osx-font-smoothing: grayscale;
+   background-color: $color-background;
+}
+
+.page,
+.main {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   overflow: hidden;
+}

@@ -1,0 +1,109 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_ProjectsWindow {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   background-color: $window-face;
+   padding: 4px;
+   box-sizing: border-box;
+
+   &_content {
+      @include mixins.tab-content;
+      flex: 1;
+   }
+
+   &_section {
+      @include mixins.section-fieldset;
+
+      &:not(:last-child) {
+         margin-bottom: 20px;
+      }
+   }
+
+   &_subtitle {
+      @include typography.body-m;
+      padding-left: 4px;
+      padding-right: 2px;
+      margin-bottom: 12px;
+   }
+
+   &_title {
+      @include typography.body-l-bold;
+      margin-bottom: 8px;
+   }
+
+   &_shortDescription {
+      @include typography.body-m-bold;
+      margin-bottom: 20px;
+   }
+
+   &_longDescription {
+      line-height: 1.4;
+      margin-bottom: 8px;
+   }
+
+   &_technologies {
+      @include typography.body;
+      margin-top: 16px;
+      margin-bottom: 16px;
+   }
+
+   &_realizations {
+      margin-top: 8px;
+
+      ul {
+         padding-left: 20px;
+         list-style-type: disc;
+
+         li {
+            margin-bottom: 8px;
+         }
+      }
+   }
+
+   &_buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: flex-end;
+   }
+
+   &_button {
+      @include mixins.border-raised;
+      @include typography.body;
+
+      cursor: pointer;
+      background-color: $button-face;
+      color: $text-color;
+      padding: 7px 20px 5px 20px;
+      border: none;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+      max-width: fit-content;
+      margin-top: 16px;
+
+      &:active {
+         @include mixins.border-pressed;
+      }
+
+      &:disabled {
+         @include mixins.border-raised;
+
+         cursor: default;
+         color: $text-disabled;
+         background-color: $button-face;
+         opacity: 0.8;
+      }
+
+      &:focus,
+      &:focus-visible {
+         @include mixins.focus;
+      }
+   }
+}

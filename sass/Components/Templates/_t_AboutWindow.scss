@@ -1,0 +1,53 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.t_AboutWindow {
+   @include mixins.border-flat;
+   display: flex;
+   flex: 1;
+   height: 100%;
+   max-height: 80dvh;
+   background-color: $window-face;
+   box-sizing: border-box;
+   padding: 2px;
+   width: fit-content;
+
+   &_content {
+      flex: 1;
+      padding: 8px;
+      height: 100%;
+      box-sizing: border-box;
+   }
+
+   &_title {
+      @include typography.body-l-bold;
+      margin-bottom: 16px;
+   }
+
+   &_description {
+      @include typography.body;
+      margin-bottom: 8px;
+      line-height: 1.4;
+   }
+
+   &_footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end
+   }
+
+   &_download {
+      @include typography.body;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      padding: 2px 5px;
+      margin-right: 2px;
+      max-width: fit-content;
+      height: 32px;
+      margin-top: 16px;
+   }
+}

@@ -1,0 +1,54 @@
+// FONTS
+// Win95
+@font-face {
+   font-family: 'Win95';
+   src: url('/fonts/Win95/w95fa.woff2') format('woff2'),
+      url('/fonts/Win95/w95fa.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+$font-text: 'Win95', sans-serif;
+$font-title: 'Win95', sans-serif;
+
+// COLORS
+$color-black: #000000;
+$color-white: #ffffff;
+$color-blue: #000080;
+$color-highlight: #1084d0;
+$color-hover: #000e7a;
+$color-grey: #c3c7cb;
+$color-grey-lightest: #e6e6e6;
+$color-grey-verylight: #dfdfdf;
+$color-grey-light: #c0c0c0;
+$color-grey-dark: #868a8e;
+
+$color-background: #008080;
+
+// SURFACES & ELEMENTS
+$window-face: $color-grey;
+$button-face: $color-grey;
+$button-highlight: $color-white;
+$button-shadow: $color-grey-dark;
+$button-border: $color-black;
+
+// TEXT
+$text-color: $color-black;
+$text-disabled: $color-grey-dark;
+
+// WRAPPER
+$wrapper: 1512px;
+
+// SHADOWS
+// S
+$shadow-s: 0px 2px 16px 0px rgba($color-black, 0.22);
+
+// M
+$shadow-m: 0px 2px 16px 0px $color-black;
+
+// L
+$shadow-l: 0 2px 32px 0 rgba($color-black, 0.18);
+
+// ANIMATION
+$animation: 300ms;

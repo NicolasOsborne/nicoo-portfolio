@@ -1,0 +1,35 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.a_Button {
+   @include mixins.border-raised;
+   @include typography.body;
+
+   cursor: pointer;
+   background-color: $button-face;
+   color: $text-color;
+   padding: 7px 20px 5px 20px;
+   border: none;
+   box-sizing: border-box;
+   text-align: center;
+   position: relative;
+
+   &:active {
+      @include mixins.border-pressed;
+   }
+
+   &:disabled {
+      @include mixins.border-raised;
+
+      cursor: default;
+      color: $text-disabled;
+      background-color: $button-face;
+      opacity: 0.8;
+   }
+
+   &:focus,
+   &:focus-visible {
+      @include mixins.focus;
+   }
+}

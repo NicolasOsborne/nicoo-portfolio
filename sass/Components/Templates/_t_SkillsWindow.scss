@@ -1,0 +1,30 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_SkillsWindow {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   background-color: $window-face;
+   padding: 4px;
+   box-sizing: border-box;
+
+   &_content {
+      @include mixins.tab-content;
+
+      flex: 1;
+      overflow-y: auto;
+   }
+
+   &_section {
+      @include mixins.section-fieldset;
+   }
+
+   &_subtitle {
+      @include typography.body-m;
+      padding-left: 4px;
+      padding-right: 2px;
+      margin-bottom: 12px;
+   }
+}

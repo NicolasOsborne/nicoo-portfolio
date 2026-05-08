@@ -1,0 +1,47 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.m_Tabs {
+   $self: &;
+
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0;
+   row-gap: 2px;
+   padding-left: 4px;
+
+   &_tab {
+      @include typography.body;
+      @include mixins.tab;
+
+      flex: 1;
+      padding: 3px 6px;
+      min-height: 20px;
+      margin-right: 2px;
+      margin-bottom: -1px;
+      margin-left: 0;
+      position: relative;
+      z-index: 10;
+      white-space: nowrap;
+
+
+      &:focus {
+         @include mixins.focus;
+      }
+
+      &:not(&-active) {
+         border-left: 1px solid $button-highlight;
+         border-top-left-radius: 3px;
+      }
+
+      &-active {
+         @include mixins.tab-active;
+         margin-top: -2px;
+         margin-left: -2px;
+         margin-bottom: 0;
+         z-index: 15;
+      }
+   }
+}

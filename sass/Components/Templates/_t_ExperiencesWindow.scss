@@ -1,0 +1,39 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_ExperiencesWindow {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   background-color: $window-face;
+   padding: 4px;
+   box-sizing: border-box;
+   width: 100%;
+
+   &_title {
+      @include typography.body-l-bold;
+      margin-bottom: 12px;
+   }
+
+   &_description {
+      line-height: 1.4;
+   }
+
+   &_content {
+      @include mixins.tab-content;
+      flex: 1;
+      overflow-y: auto;
+   }
+
+   &_section {
+      @include mixins.section-fieldset;
+   }
+
+   &_subtitle {
+      @include typography.body-m-bold;
+      padding-left: 4px;
+      padding-right: 2px;
+      margin-bottom: 12px;
+   }
+}

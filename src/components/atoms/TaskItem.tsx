@@ -1,0 +1,38 @@
+import { FC } from 'react'
+import Image from 'next/image'
+import { OpenWindow } from '@/context/WindowContext'
+import classNames from 'classnames'
+
+export type TaskItemProps = {
+  windowData: OpenWindow
+  isFocused?: boolean
+  onClick?: () => void
+}
+
+const TaskItem: FC<TaskItemProps> = (props) => {
+  const { windowData, isFocused, onClick } = props
+  const componentsClass = 'a_TaskItem'
+
+  return (
+    <button
+      data-window-id={windowData.id}
+      type='button'
+      disabled={false}
+      className={classNames(componentsClass, {
+        [`${componentsClass}_focused`]: isFocused,
+      })}
+      onClick={onClick}
+      title={windowData.title}
+    >
+      <Image
+        src={windowData.icon}
+        alt={windowData.title}
+        width={16}
+        height={16}
+      />
+      <span className={`${componentsClass}_label`}>{windowData.title}</span>
+    </button>
+  )
+}
+
+export default TaskItem

@@ -1,0 +1,37 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/mixins';
+
+.o_Window {
+   @include mixins.border-window;
+
+   background-color: $window-face;
+   border: none;
+   padding: 2px;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+
+   &_content {
+      @include mixins.border-flat;
+
+      background-color: $window-face;
+      padding: 8px;
+      overflow: auto;
+   }
+
+   &_desktop {
+      position: absolute;
+      z-index: 20;
+      width: max-content;
+      max-width: 80dvw;
+      max-height: 85dvh;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      &_desktop {
+         min-width: 450px;
+         width: auto
+      }
+   }
+}
