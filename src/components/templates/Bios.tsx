@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useEffect, useState, useCallback } from 'react'
+import React, { FC, useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCurrentLocale } from '@/hooks/useCurrentLocale'
 import { OsId } from '@/enums/OsId'
@@ -21,8 +21,8 @@ const Bios: FC = () => {
     [router, locale],
   )
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent | React.KeyboardEvent) => {
       switch (e.key) {
         case 'ArrowUp':
           e.preventDefault()
@@ -40,29 +40,36 @@ const Bios: FC = () => {
           boot(content.bios.list[selectedIndex].id)
           break
       }
-    }
+    },
+    [content.bios.list, selectedIndex, boot],
+  )
 
+  useEffect(() => {
     globalThis.addEventListener('keydown', handleKeyDown)
     return () => globalThis.removeEventListener('keydown', handleKeyDown)
-  }, [selectedIndex, boot])
+  }, [handleKeyDown])
 
   return (
     <main className={componentsClass}>
       <div className={`${componentsClass}_inner`}>
         <div className={`${componentsClass}_menu`}>
-          <ul
-            className={`${componentsClass}_list`}
-            aria-label='Select operating system'
-          >
+          <ul className={`${componentsClass}_list`}>
             {content.bios.list.map((entry, index) => (
-              <li
-                key={entry.id}
-                aria-selected={index === selectedIndex}
-                className={`${componentsClass}_entry ${index === selectedIndex ? ` ${componentsClass}_entry-selected` : ''}`}
-                onClick={() => boot(entry.id)}
-                onMouseEnter={() => setSelectedIndex(index)}
-              >
-                {entry.label}
+              <li className={`${componentsClass}_item`} key={entry.id}>
+                <button
+                  type='button'
+                  aria-current={index === selectedIndex ? 'true' : undefined}
+                  className={`${componentsClass}_entry ${
+                    index === selectedIndex
+                      ? `${componentsClass}_entry-selected`
+                      : ''
+                  }`}
+                  onClick={() => boot(entry.id)}
+                  onMouseEnter={() => setSelectedIndex(index)}
+                  onKeyDown={handleKeyDown}
+                >
+                  {entry.label}
+                </button>
               </li>
             ))}
           </ul>

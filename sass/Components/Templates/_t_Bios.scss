@@ -38,12 +38,25 @@
       gap: 2px;
    }
 
+   &_item {
+      display: block;
+      width: 100%;
+   }
+
    &_entry {
+      appearance: none;
+      background: transparent;
+      border: none;
+      display: block;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
       padding: 4px 6px;
       font-size: 1rem;
       color: $color-bios-text;
       white-space: nowrap;
-      cursor: pointer;
 
       &-selected {
          background-color: $color-bios-highlight;
