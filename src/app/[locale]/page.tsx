@@ -1,7 +1,7 @@
-import { i18nConfig } from '@/utils/i18n/i18n'
+import { i18nConfig } from '@/utils/i18n'
 import { Locale } from '@/types/contentType'
 import { notFound } from 'next/navigation'
-import BiosScreen from '@/components/templates/BiosScreen'
+import Bios from '@/components/templates/Bios'
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -18,5 +18,5 @@ export default async function BiosPage({ params }: HomePageProps) {
     notFound()
   }
 
-  return <BiosScreen />
+  return <Bios />
 }

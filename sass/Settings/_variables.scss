@@ -1,20 +1,22 @@
 // FONTS
-// Win95
-@font-face {
-   font-family: 'Win95';
-   src: url('/fonts/win95/w95fa.woff2') format('woff2'),
-      url('/fonts/win95/w95fa.woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
-   font-display: swap;
-}
+$font-bios: 'perfectDOS', monospace;
+$font-win95: 'Win95', sans-serif;
 
+// Fallbacks
 $font-text: 'Win95', sans-serif;
 $font-title: 'Win95', sans-serif;
 
 // COLORS
+// Basic
 $color-black: #000000;
 $color-white: #ffffff;
+
+// BIOS
+$color-bios-background: $color-black;
+$color-bios-text: #a9a9a9;
+$color-bios-highlight: #aaaaaa;
+
+// Win95
 $color-blue: #000080;
 $color-highlight: #1084d0;
 $color-hover: #000e7a;

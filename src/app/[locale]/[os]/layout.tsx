@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { WindowsProvider } from '@/context/WindowContext'
 import ThemeProvider from '@/context/ThemeContext'
 import { OsId } from '@/enums/OsId'
-import { osConfigs } from '@/config/OSThemes'
+import { osConfigs } from '@/config/osThemes'
 
 type OsLayoutProps = {
   children: ReactNode

@@ -2,6 +2,29 @@ import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentFr: Content = {
+  bios: {
+    list: [
+      {
+        id: 'win95',
+        label: 'Microsoft Windows 95',
+      },
+      {
+        id: 'win98',
+        label: 'Microsoft Windows 98',
+      },
+      {
+        id: 'winXP',
+        label: 'Microsoft Windows XP',
+      },
+      {
+        id: 'linux',
+        label: 'GNU/Linux',
+      },
+    ],
+    navigation:
+      "Utilisez les touches ↑ et ↓ pour choisir un systeme d'exploitation.",
+    boot: "Appuyez sur ENTREE pour lancer le systeme d'exploitation selectionne.",
+  },
   login: {
     title: 'Bienvenue sur le Portfolio de Nicoo',
     icon: DesktopIcon.LOGIN,

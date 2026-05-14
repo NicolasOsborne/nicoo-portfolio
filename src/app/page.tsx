@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { headers } from 'next/headers'
-import { i18nConfig } from '@/utils/i18n/i18n'
+import { i18nConfig } from '@/utils/i18n'
 import { Locale } from '@/types/contentType'
 
 function detectLocale(acceptLanguage: string | null): Locale {

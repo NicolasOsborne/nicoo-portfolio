@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
-import { i18nConfig } from '@/utils/i18n/i18n'
+import { i18nConfig } from '@/utils/i18n'
 import { Locale } from '@/types/contentType'
 import ContentProvider from '@/context/ContentContext'
 
@@ -13,10 +13,8 @@ export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }))
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: LocaleLayoutProps) {
+const LocaleLayout = async (props: Readonly<LocaleLayoutProps>) => {
+  const { children, params } = props
   const { locale } = await params
 
   if (!i18nConfig.locales.includes(locale as Locale)) {
@@ -24,12 +22,10 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body>
-        <ContentProvider initialLocale={locale as Locale}>
-          {children}
-        </ContentProvider>
-      </body>
-    </html>
+    <ContentProvider initialLocale={locale as Locale}>
+      {children}
+    </ContentProvider>
   )
 }
+
+export default LocaleLayout

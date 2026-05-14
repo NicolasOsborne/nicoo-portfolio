@@ -9,7 +9,7 @@ import {
   ReactNode,
 } from 'react'
 import { Content, Locale } from '@/types/contentType'
-import { getContent, i18nConfig } from '@/utils/i18n/i18n'
+import { getContent, i18nConfig } from '@/utils/i18n'
 
 type ContentContextType = {
   content: Content

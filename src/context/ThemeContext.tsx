@@ -10,7 +10,7 @@ import {
 } from 'react'
 import { OsId } from '@/enums/OsId'
 import { OsTheme } from '@/types/osThemeType'
-import { osConfigs } from '@/config/OSThemes'
+import { osConfigs } from '@/config/osThemes'
 
 type ThemeContextType = {
   osId: OsId
@@ -28,9 +28,9 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, osId }) => {
   const theme = osConfigs[osId]
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-os', osId)
+    document.documentElement.dataset.os = osId
     return () => {
-      document.documentElement.removeAttribute('data-os')
+      delete document.documentElement.dataset.os
     }
   }, [osId])
 

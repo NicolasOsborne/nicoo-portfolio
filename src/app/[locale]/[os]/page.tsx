@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
-import { osConfigs } from '@/config/OSThemes'
+import { osConfigs } from '@/config/osThemes'
 import { OsId } from '@/enums/OsId'
 import Win95 from '@/components/templates/Win95'
-import Win98 from '@/components/templates/Win98S'
-import WinXP from '@/components/templates/WinXPS'
+import Win98 from '@/components/templates/Win98'
+import WinXP from '@/components/templates/WinXP'
 import Linux from '@/components/templates/Linux'
 
 type OsPageProps = {

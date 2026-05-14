@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { i18nConfig } from '@/utils/i18n/i18n'
+import { i18nConfig } from '@/utils/i18n'
 import { useMemo } from 'react'
 
 export const useCurrentLocale = (): string => {

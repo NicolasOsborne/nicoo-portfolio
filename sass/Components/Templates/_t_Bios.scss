@@ -1,0 +1,66 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_Bios {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100vw;
+   height: 100vh;
+   background-color: $color-bios-background;
+   font-family: $font-bios;
+   color: $color-bios-text;
+   cursor: default;
+   user-select: none;
+
+   &_inner {
+      width: 100%;
+      max-width: 640px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+   }
+
+   &_menu {
+      border: 1px solid $color-bios-highlight;
+      padding: 8px 8px 128px 8px;
+   }
+
+   &_list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+   }
+
+   &_entry {
+      padding: 4px 6px;
+      font-size: 1rem;
+      color: $color-bios-text;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &-selected {
+         background-color: $color-bios-highlight;
+         color: $color-bios-background;
+      }
+   }
+
+   &_footer {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+   }
+
+   &_hint {
+      font-size: 1rem;
+      color: $color-bios-text;
+      text-align: center;
+   }
+}

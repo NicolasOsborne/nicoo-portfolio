@@ -1,6 +1,6 @@
 import { Content, Locale } from '@/types/contentType'
-import { contentEn } from '../../../locales/en.content'
-import { contentFr } from '../../../locales/fr.content'
+import { contentEn } from '../../locales/en.content'
+import { contentFr } from '../../locales/fr.content'
 
 export const i18nConfig = {
   locales: ['en', 'fr'] as Locale[],
@@ -17,7 +17,7 @@ export function getContent(locale: Locale): Content {
     return contentMap[locale]
   }
   console.warn(
-    `Locale "${locale}" not found. Falling back to default (${i18nConfig.defaultLocale})`
+    `Locale "${locale}" not found. Falling back to default (${i18nConfig.defaultLocale})`,
   )
   return contentMap[i18nConfig.defaultLocale]
 }
