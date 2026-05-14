@@ -51,33 +51,42 @@ const Bios: FC = () => {
 
   return (
     <main className={componentsClass}>
-      <div className={`${componentsClass}_inner`}>
-        <div className={`${componentsClass}_menu`}>
-          <ul className={`${componentsClass}_list`}>
-            {content.bios.list.map((entry, index) => (
-              <li className={`${componentsClass}_item`} key={entry.id}>
-                <button
-                  type='button'
-                  aria-current={index === selectedIndex ? 'true' : undefined}
-                  className={`${componentsClass}_entry ${
-                    index === selectedIndex
-                      ? `${componentsClass}_entry-selected`
-                      : ''
-                  }`}
-                  onClick={() => boot(entry.id)}
-                  onMouseEnter={() => setSelectedIndex(index)}
-                  onKeyDown={handleKeyDown}
-                >
-                  {entry.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+      <div className={`${componentsClass}_wrapper`}>
+        <div className={`${componentsClass}_header`}>
+          <h1 className={`${componentsClass}_title`}>{content.bios.title}</h1>
+          <h2 className={`${componentsClass}_subtitle`}>
+            {content.bios.subtitle}
+          </h2>
         </div>
-
-        <div className={`${componentsClass}_footer`}>
-          <p className={`${componentsClass}_hint`}>{content.bios.navigation}</p>
-          <p className={`${componentsClass}_hint`}>{content.bios.boot}</p>
+        <div className={`${componentsClass}_inner`}>
+          <div className={`${componentsClass}_menu`}>
+            <ul className={`${componentsClass}_list`}>
+              {content.bios.list.map((entry, index) => (
+                <li className={`${componentsClass}_item`} key={entry.id}>
+                  <button
+                    type='button'
+                    aria-current={index === selectedIndex ? 'true' : undefined}
+                    className={`${componentsClass}_entry ${
+                      index === selectedIndex
+                        ? `${componentsClass}_entry-selected`
+                        : ''
+                    }`}
+                    onClick={() => boot(entry.id)}
+                    onMouseEnter={() => setSelectedIndex(index)}
+                    onKeyDown={handleKeyDown}
+                  >
+                    {entry.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={`${componentsClass}_footer`}>
+            <p className={`${componentsClass}_hint`}>
+              {content.bios.navigation}
+            </p>
+            <p className={`${componentsClass}_hint`}>{content.bios.boot}</p>
+          </div>
         </div>
       </div>
     </main>

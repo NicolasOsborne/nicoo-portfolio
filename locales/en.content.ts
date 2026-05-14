@@ -3,22 +3,24 @@ import { Content } from '@/types/contentType'
 
 export const contentEn: Content = {
   bios: {
+    title: 'Nicoo - Portfolio',
+    subtitle: 'Front-End Developer and Web Integrator',
     list: [
       {
         id: 'win95',
-        label: 'Microsoft Windows 95',
+        label: 'Microsoft Windows 95 (the first computer I used)',
       },
       {
         id: 'win98',
-        label: 'Microsoft Windows 98',
+        label: 'Microsoft Windows 98 (my childhood computer)',
       },
       {
         id: 'winXP',
-        label: 'Microsoft Windows XP',
+        label: 'Microsoft Windows XP (my first laptop)',
       },
       {
         id: 'linux',
-        label: 'GNU/Linux',
+        label: 'GNU/Linux (my daily working tool)',
       },
     ],
     navigation:

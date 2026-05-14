@@ -8,6 +8,8 @@ type BiosEntry = {
 }
 
 export type BiosContent = {
+  title: string
+  subtitle: string
   list: BiosEntry[]
   navigation: string
   boot: string

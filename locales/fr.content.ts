@@ -3,22 +3,24 @@ import { Content } from '@/types/contentType'
 
 export const contentFr: Content = {
   bios: {
+    title: 'Nicoo - Portfolio',
+    subtitle: 'Developpeur Front-End et Integrateur Web',
     list: [
       {
         id: 'win95',
-        label: 'Microsoft Windows 95',
+        label: "Microsoft Windows 95 (le premier ordinateur que j'ai utilise)",
       },
       {
         id: 'win98',
-        label: 'Microsoft Windows 98',
+        label: "Microsoft Windows 98 (l'ordinateur de mon enfance)",
       },
       {
         id: 'winXP',
-        label: 'Microsoft Windows XP',
+        label: 'Microsoft Windows XP (mon premier ordinateur portable)',
       },
       {
         id: 'linux',
-        label: 'GNU/Linux',
+        label: 'GNU/Linux (mon outil de travail au quotidien)',
       },
     ],
     navigation:
