@@ -13,6 +13,7 @@ export type BiosContent = {
   list: BiosEntry[]
   navigation: string
   boot: string
+  mobile: string
 }
 
 export type LoginContent = {

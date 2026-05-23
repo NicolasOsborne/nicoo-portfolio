@@ -26,6 +26,7 @@ export const contentFr: Content = {
     navigation:
       "Utilisez les touches ↑ et ↓ pour choisir un systeme d'exploitation.",
     boot: "Appuyez sur ENTREE pour lancer le systeme d'exploitation selectionne.",
+    mobile: "Cliquez sur le systeme d'exploitation que vous souhaitez lancer.",
   },
   login: {
     title: 'Bienvenue sur le Portfolio de Nicoo',

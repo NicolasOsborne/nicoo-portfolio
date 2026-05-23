@@ -26,6 +26,7 @@ export const contentEn: Content = {
     navigation:
       'Use the ↑ and ↓ arrow keys to select which entry is highlighted.',
     boot: 'Press ENTER to boot the selected operating system.',
+    mobile: 'Click on the operating system you want to launch.',
   },
   login: {
     title: "Welcome to Nicoo's Portfolio",

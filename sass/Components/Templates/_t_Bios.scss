@@ -92,6 +92,37 @@
       }
    }
 
+   &_locale {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+   }
+
+   &_locale-entry {
+      appearance: none;
+      background: transparent;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      color: $color-bios-text;
+      cursor: pointer;
+      outline: none;
+      padding: 2px 8px;
+      letter-spacing: 0.05em;
+
+      &-selected {
+         background-color: $color-bios-highlight;
+         color: $color-bios-background;
+         border-color: $color-bios-highlight;
+      }
+
+      &-active {
+         outline: 1px solid $color-bios-highlight;
+         outline-offset: 2px;
+      }
+   }
+
    &_footer {
       display: flex;
       flex-direction: column;
