@@ -25,6 +25,7 @@ export const contentFr: Content = {
     ],
     navigation:
       "Utilisez les touches ↑ et ↓ pour choisir un systeme d'exploitation.",
+    language: 'Utilisez les touches ← et → pour choisir une langue.',
     boot: "Appuyez sur ENTREE pour lancer le systeme d'exploitation selectionne.",
     mobile: "Cliquez sur le systeme d'exploitation que vous souhaitez lancer.",
   },

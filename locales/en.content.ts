@@ -25,6 +25,7 @@ export const contentEn: Content = {
     ],
     navigation:
       'Use the ↑ and ↓ arrow keys to select which entry is highlighted.',
+    language: 'Use the ← and → arrow keys to select a language.',
     boot: 'Press ENTER to boot the selected operating system.',
     mobile: 'Click on the operating system you want to launch.',
   },

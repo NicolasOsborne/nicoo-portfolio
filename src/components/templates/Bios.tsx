@@ -171,11 +171,18 @@ const Bios: FC = () => {
             ))}
           </div>
           <div className={`${componentsClass}_footer`}>
-            <p className={`${componentsClass}_hint`}>
-              {isDesktop ? content.bios.navigation : content.bios.mobile}
-            </p>
-            {isDesktop && (
-              <p className={`${componentsClass}_hint`}>{content.bios.boot}</p>
+            {isDesktop ? (
+              <div className={`${componentsClass}_instructions`}>
+                <p className={`${componentsClass}_hint`}>
+                  {content.bios.navigation}
+                </p>
+                <p className={`${componentsClass}_hint`}>
+                  {content.bios.language}
+                </p>
+                <p className={`${componentsClass}_hint`}>{content.bios.boot}</p>
+              </div>
+            ) : (
+              <p className={`${componentsClass}_hint`}>{content.bios.mobile}</p>
             )}
           </div>
         </div>

@@ -12,6 +12,7 @@ export type BiosContent = {
   subtitle: string
   list: BiosEntry[]
   navigation: string
+  language: string
   boot: string
   mobile: string
 }
