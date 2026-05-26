@@ -7,6 +7,7 @@ import {
   useState,
   FC,
   ReactNode,
+  useEffect,
 } from 'react'
 import { Content, Locale } from '@/types/contentType'
 import { getContent, i18nConfig } from '@/utils/i18n'
@@ -32,11 +33,14 @@ const ContentProvider: FC<ContentProviderProps> = (props) => {
     getContent(initialLocale),
   )
 
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   const setLocale = (next: Locale) => {
     if (!i18nConfig.locales.includes(next)) return
     setLocaleState(next)
     setContent(getContent(next))
-    document.documentElement.lang = next
   }
 
   const value = useMemo(

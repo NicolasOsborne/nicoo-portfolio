@@ -2,23 +2,24 @@
 
 import { FC } from 'react'
 
-import { useWindows, WindowsProvider } from '@/context/WindowContext'
+import { useWindows } from '@/context/WindowContext'
 import { useContent } from '@/context/ContentContext'
 import WindowContainer from '../organisms/WindowContainer'
 import TaskBar from '../organisms/TaskBar'
 import DesktopShortcuts from '../molecules/DesktopShortcuts'
 import DesktopIcon from '../atoms/DesktopIcon'
+import { BootScreenProps } from '@/types/bootType'
+import classNames from 'classnames'
 
-export const pageSlug = 'desktop'
-
-const DesktopInner: FC = () => {
+const Desktop: FC<BootScreenProps> = (props) => {
+  const { additionalClass } = props
   const { openWindows } = useWindows()
   const { content } = useContent()
 
   const componentsClass = 'p_Desktop'
 
   return (
-    <div className={componentsClass}>
+    <div className={classNames(componentsClass, additionalClass)}>
       <div className={`${componentsClass}_background`}>
         {openWindows.map((window) => (
           <WindowContainer key={window.id} windowData={window} />
@@ -30,11 +31,5 @@ const DesktopInner: FC = () => {
     </div>
   )
 }
-
-const Desktop: FC = () => (
-  <WindowsProvider>
-    <DesktopInner />
-  </WindowsProvider>
-)
 
 export default Desktop

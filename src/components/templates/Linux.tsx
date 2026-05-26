@@ -3,7 +3,7 @@
 import { FC } from 'react'
 
 const Linux: FC = () => {
-  const componentsClass = '.t_Linux'
+  const componentsClass = 't_Linux'
 
   return (
     <main className={componentsClass}>

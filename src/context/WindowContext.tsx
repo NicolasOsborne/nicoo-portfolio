@@ -53,7 +53,7 @@ const initialState: WindowsState = {
 }
 
 const getInitialOffset = (): number => {
-  if (typeof globalThis.window === 'undefined') {
+  if (globalThis.window === undefined) {
     return 100
   }
   const isMobile = window.innerWidth < 768

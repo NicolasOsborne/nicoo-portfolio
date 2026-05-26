@@ -33,13 +33,13 @@ export const contentFr: Content = {
     title: 'Bienvenue sur le Portfolio de Nicoo',
     icon: DesktopIcon.LOGIN,
     prompt:
-      "Saisissez votre nom d'utilisteur et votre mot de passe pour vous connecter au système.",
+      "Saisissez votre nom d'utilisateur et votre mot de passe pour vous connecter au système.",
     username: 'Utilisateur :',
     password: 'Mot de passe :',
     ok: 'Ok',
     cancel: 'Annuler',
     errors: {
-      usernameRequired: 'Veuillez saisir un utilisteur',
+      usernameRequired: 'Veuillez saisir un utilisateur',
       passwordRequired: 'Veuillez saisir un mot de passe',
       error: 'Erreur de connexion... Veuillez réessayer.',
     },

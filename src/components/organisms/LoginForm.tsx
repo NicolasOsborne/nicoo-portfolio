@@ -7,8 +7,12 @@ import { useAuth } from '@/context/AuthContext'
 import ControlType from '@/enums/ControlType'
 import { useContent } from '@/context/ContentContext'
 import Image from 'next/image'
+import { BootScreenProps } from '@/types/bootType'
+import classNames from 'classnames'
 
-const LoginForm: FC = () => {
+const LoginForm: FC<BootScreenProps> = (props) => {
+  const { additionalClass, onComplete } = props
+
   const { login } = useAuth()
   const { content } = useContent()
 
@@ -18,7 +22,7 @@ const LoginForm: FC = () => {
   const componentsClass = 'o_LoginForm'
 
   return (
-    <div className={componentsClass}>
+    <div className={classNames(componentsClass, additionalClass)}>
       <Window
         title={content.login.title}
         icon={content.login.icon}
