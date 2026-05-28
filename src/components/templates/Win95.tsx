@@ -9,7 +9,7 @@ import LogoScreen from '../pages/LogoScreen'
 import LoginScreen from '../pages/LoginScreen'
 
 const Win95: FC = () => {
-  const { current, advance, isLast } = useBootSequence('win95')
+  const { current, advance } = useBootSequence('win95')
 
   const componentsClass = 't_Win95'
 
@@ -50,13 +50,7 @@ const Win95: FC = () => {
         />
       )
     case 'desktop':
-      return (
-        <Desktop
-          additionalClass={componentsClass}
-          osId='win95'
-          onComplete={isLast}
-        />
-      )
+      return <Desktop additionalClass={componentsClass} osId='win95' />
     default:
       return null
   }

@@ -8,10 +8,15 @@ import WindowContainer from '../organisms/WindowContainer'
 import TaskBar from '../organisms/TaskBar'
 import DesktopShortcuts from '../molecules/DesktopShortcuts'
 import DesktopIcon from '../atoms/DesktopIcon'
-import { BootScreenProps } from '@/types/bootType'
 import classNames from 'classnames'
+import { OsId } from '@/enums/OsId'
 
-const Desktop: FC<BootScreenProps> = (props) => {
+export type DesktopProps = {
+  additionalClass?: string
+  osId: OsId
+}
+
+const Desktop: FC<DesktopProps> = (props) => {
   const { additionalClass } = props
   const { openWindows } = useWindows()
   const { content } = useContent()

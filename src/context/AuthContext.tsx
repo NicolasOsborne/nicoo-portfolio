@@ -5,94 +5,37 @@ import {
   useContext,
   useState,
   useMemo,
-  useEffect,
   useCallback,
   FC,
   ReactNode,
 } from 'react'
-import jwt from 'jsonwebtoken'
-import { User } from '@/types/userType'
+import { USER } from '../../data/users'
 
 type AuthContextType = {
   isAuthenticated: boolean
-  user: User | null
-  login: (username: string, password: string) => Promise<boolean>
+  login: (username: string, password: string) => boolean
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
-const TOKEN_KEY = 'jwt_token'
 
-type AuthProviderProps = {
-  children: ReactNode
-}
+const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null)
-  const [isReady, setIsReady] = useState(false)
-
-  useEffect(() => {
-    const token = localStorage.getItem(TOKEN_KEY)
-    if (token) {
-      try {
-        const decoded = jwt.decode(token) as jwt.JwtPayload | null
-        if (decoded?.username && decoded?.sub) {
-          setUser({
-            id: decoded.sub,
-            username: decoded.username,
-          })
-        } else {
-          localStorage.removeItem(TOKEN_KEY)
-        }
-      } catch {
-        localStorage.removeItem(TOKEN_KEY)
-      }
-    }
-    setIsReady(true)
-  }, [])
-
-  const login = useCallback(async (username: string, password: string) => {
-    try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      })
-      const data = await res.json()
-      if (res.ok && data.success && data.token) {
-        localStorage.setItem(TOKEN_KEY, data.token)
-        const decoded = jwt.decode(data.token) as jwt.JwtPayload | null
-        if (decoded?.username && decoded?.sub) {
-          setUser({
-            id: decoded.sub,
-            username: decoded.username,
-          })
-        }
-        return true
-      }
-      return false
-    } catch (err) {
-      console.error('Login failed', err)
-      return false
-    }
+  const login = useCallback((username: string, password: string) => {
+    const valid = username === USER.username && password === USER.password
+    if (valid) setIsAuthenticated(true)
+    return valid
   }, [])
 
   const logout = useCallback(() => {
-    localStorage.removeItem(TOKEN_KEY)
-    setUser(null)
+    setIsAuthenticated(false)
   }, [])
 
   const value = useMemo(
-    () => ({
-      isAuthenticated: !!user,
-      user,
-      login,
-      logout,
-    }),
-    [user, login, logout],
+    () => ({ isAuthenticated, login, logout }),
+    [isAuthenticated, login, logout],
   )
-
-  if (!isReady) return null
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

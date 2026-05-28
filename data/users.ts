@@ -1,15 +1,11 @@
-import bcrypt from 'bcryptjs'
+export type User = {
+  username: string
+  password: string
+  // avatar: string
+}
 
-const rawUsers: Array<{ id: string; username: string; password: string }> = [
-  { id: 'user_visitor', username: 'visitor', password: 'password' },
-  { id: 'user_nico', username: 'nico', password: 'admin' },
-]
-
-const users: Array<{ id: string; username: string; passwordHash: string }> =
-  rawUsers.map((u) => ({
-    id: u.id,
-    username: u.username,
-    passwordHash: bcrypt.hashSync(u.password, 10),
-  }))
-
-export default users
+export const USER: User = {
+  username: 'Nicoo',
+  password: 'portfolio',
+  // avatar: '/assets/themes/win95/icons/desktop/login.svg',
+}

@@ -1,3 +1,5 @@
+import { OsId } from '@/enums/OsId'
+
 export type BootScreen =
   | 'specs'
   | 'systemconfig'
@@ -15,7 +17,7 @@ export type BootSequence = BootStep[]
 
 export type BootScreenProps = {
   additionalClass?: string
-  osId: string
+  osId: OsId
   duration?: number
   onComplete: () => void
 }

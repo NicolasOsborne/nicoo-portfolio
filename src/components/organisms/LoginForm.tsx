@@ -7,19 +7,36 @@ import { useAuth } from '@/context/AuthContext'
 import ControlType from '@/enums/ControlType'
 import { useContent } from '@/context/ContentContext'
 import Image from 'next/image'
-import { BootScreenProps } from '@/types/bootType'
 import classNames from 'classnames'
+import { USER } from '../../../data/users'
 
-const LoginForm: FC<BootScreenProps> = (props) => {
+export type LoginFormProps = {
+  additionalClass?: string
+  onComplete: () => void
+}
+
+const LoginForm: FC<LoginFormProps> = (props) => {
   const { additionalClass, onComplete } = props
 
   const { login } = useAuth()
   const { content } = useContent()
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
 
   const componentsClass = 'o_LoginForm'
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setError(null)
+    const success = login(username, password)
+    if (success) {
+      onComplete()
+    } else {
+      setError(content.login.errors.error)
+    }
+  }
 
   return (
     <div className={classNames(componentsClass, additionalClass)}>
@@ -30,14 +47,7 @@ const LoginForm: FC<BootScreenProps> = (props) => {
         isFocused={true}
       >
         <div className={`${componentsClass}_window`}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              setIsSubmitting(true)
-              setError(null)
-            }}
-            className={`${componentsClass}_form`}
-          >
+          <form onSubmit={handleSubmit} className={`${componentsClass}_form`}>
             <div className={`${componentsClass}_content`}>
               <div className={`${componentsClass}_header`}>
                 <Image
@@ -50,7 +60,6 @@ const LoginForm: FC<BootScreenProps> = (props) => {
                   {content.login.prompt}
                 </p>
               </div>
-
               <div className={`${componentsClass}_fields`}>
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>
@@ -59,13 +68,11 @@ const LoginForm: FC<BootScreenProps> = (props) => {
                   <input
                     type='text'
                     className={`${componentsClass}_input`}
-                    disabled={isSubmitting}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoFocus
                   />
                 </label>
-                {error && (
-                  <p className={`${componentsClass}_message-error`}>{error}</p>
-                )}
-
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>
                     {content.login.password}
@@ -73,7 +80,8 @@ const LoginForm: FC<BootScreenProps> = (props) => {
                   <input
                     type='password'
                     className={`${componentsClass}_input`}
-                    disabled={isSubmitting}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </label>
                 {error && (
@@ -81,15 +89,15 @@ const LoginForm: FC<BootScreenProps> = (props) => {
                 )}
               </div>
             </div>
-
             <div className={`${componentsClass}_buttons`}>
-              <Button type='submit' disabled={isSubmitting}>
-                {content.login.ok}
-              </Button>
+              <Button type='submit'>{content.login.ok}</Button>
               <Button
                 type='button'
-                disabled={isSubmitting}
-                onClick={() => setError(null)}
+                onClick={() => {
+                  setUsername('')
+                  setPassword('')
+                  setError(null)
+                }}
               >
                 {content.login.cancel}
               </Button>
