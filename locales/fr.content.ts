@@ -2,17 +2,44 @@ import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentFr: Content = {
+  bios: {
+    title: 'Nicoo Portfolio',
+    subtitle: 'Developpeur Front-End et Integrateur Web',
+    list: [
+      {
+        id: 'win95',
+        label: "Microsoft Windows 95 (le premier ordinateur que j'ai utilise)",
+      },
+      {
+        id: 'win98',
+        label: "Microsoft Windows 98 (l'ordinateur de mon enfance)",
+      },
+      {
+        id: 'winXP',
+        label: 'Microsoft Windows XP (mon premier ordinateur portable)',
+      },
+      {
+        id: 'linux',
+        label: 'GNU/Linux (mon outil de travail au quotidien)',
+      },
+    ],
+    navigation:
+      "Utilisez les touches ↑ et ↓ pour choisir un systeme d'exploitation.",
+    language: 'Utilisez les touches ← et → pour choisir une langue.',
+    boot: "Appuyez sur ENTREE pour lancer le systeme d'exploitation selectionne.",
+    mobile: "Cliquez sur le systeme d'exploitation que vous souhaitez lancer.",
+  },
   login: {
     title: 'Bienvenue sur le Portfolio de Nicoo',
     icon: DesktopIcon.LOGIN,
     prompt:
-      "Saisissez votre nom d'utilisteur et votre mot de passe pour vous connecter au système.",
+      "Saisissez votre nom d'utilisateur et votre mot de passe pour vous connecter au système.",
     username: 'Utilisateur :',
     password: 'Mot de passe :',
     ok: 'Ok',
     cancel: 'Annuler',
     errors: {
-      usernameRequired: 'Veuillez saisir un utilisteur',
+      usernameRequired: 'Veuillez saisir un utilisateur',
       passwordRequired: 'Veuillez saisir un mot de passe',
       error: 'Erreur de connexion... Veuillez réessayer.',
     },

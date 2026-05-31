@@ -2,7 +2,7 @@
 
 import { FC, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { i18nConfig } from '@/utils/i18n/i18n'
+import { i18nConfig } from '@/utils/i18n'
 
 const componentsClass = 'a_LocaleSwitch'
 

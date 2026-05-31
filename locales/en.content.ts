@@ -2,6 +2,33 @@ import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentEn: Content = {
+  bios: {
+    title: 'Nicoo Portfolio',
+    subtitle: 'Front-End Developer and Web Integrator',
+    list: [
+      {
+        id: 'win95',
+        label: 'Microsoft Windows 95 (the first computer I used)',
+      },
+      {
+        id: 'win98',
+        label: 'Microsoft Windows 98 (my childhood computer)',
+      },
+      {
+        id: 'winXP',
+        label: 'Microsoft Windows XP (my first laptop)',
+      },
+      {
+        id: 'linux',
+        label: 'GNU/Linux (my daily working tool)',
+      },
+    ],
+    navigation:
+      'Use the ↑ and ↓ arrow keys to select which entry is highlighted.',
+    language: 'Use the ← and → arrow keys to select a language.',
+    boot: 'Press ENTER to boot the selected operating system.',
+    mobile: 'Click on the operating system you want to launch.',
+  },
   login: {
     title: "Welcome to Nicoo's Portfolio",
     icon: DesktopIcon.LOGIN,

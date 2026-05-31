@@ -1,0 +1,20 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+
+.a_SpecsLine {
+   @include typography.body-m;
+
+   margin: 0;
+   padding: 0;
+   font-family: $font-bios;
+   white-space: pre;
+
+   &_memory {
+      color: $color-bios-emphasis;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      font-size: 1.25rem;
+   }
+}

@@ -1,0 +1,59 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+
+.m_SystemConfigTable {
+   display: flex;
+   flex-direction: column;
+   gap: 0;
+   border: 2px solid $color-bios-text;
+   padding: 0.5rem 1rem;
+
+   &_column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+   }
+
+   &_section {
+      display: flex;
+      flex-direction: column;
+   }
+
+   &_row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+
+      &-label {
+         color: $color-bios-text;
+         white-space: nowrap;
+      }
+
+      &-separator {
+         color: $color-bios-text;
+      }
+
+      &-value {
+         color: $color-bios-highlight;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_column {
+         width: 100%;
+         flex-direction: row;
+         justify-content: space-between;
+      }
+
+      &_section {
+         width: 50%;
+      }
+
+      &_row {
+         font-size: 1rem;
+      }
+   }
+}

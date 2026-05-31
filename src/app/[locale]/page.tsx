@@ -1,19 +1,22 @@
-import { i18nConfig } from '@/utils/i18n/i18n'
-import Home from '@/components/pages/Home'
+import { i18nConfig } from '@/utils/i18n'
 import { Locale } from '@/types/contentType'
+import { notFound } from 'next/navigation'
+import Bios from '@/components/templates/Bios'
+
+type HomePageProps = {
+  params: Promise<{ locale: string }>
+}
 
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }))
 }
 
-export default function HomePage({
-  params,
-}: Readonly<{ params: { locale: string } }>) {
-  const currentLocale: Locale = i18nConfig.locales.includes(
-    params.locale as Locale
-  )
-    ? (params.locale as Locale)
-    : i18nConfig.defaultLocale
+export default async function BiosPage({ params }: HomePageProps) {
+  const { locale } = await params
 
-  return <Home initialLocale={currentLocale} />
+  if (!i18nConfig.locales.includes(locale as Locale)) {
+    notFound()
+  }
+
+  return <Bios />
 }

@@ -53,7 +53,7 @@ const initialState: WindowsState = {
 }
 
 const getInitialOffset = (): number => {
-  if (typeof globalThis.window === 'undefined') {
+  if (globalThis.window === undefined) {
     return 100
   }
   const isMobile = window.innerWidth < 768
@@ -65,7 +65,7 @@ const getInitialOffset = (): number => {
 
 function windowsReducer(
   state: WindowsState,
-  action: WindowsAction
+  action: WindowsAction,
 ): WindowsState {
   switch (action.type) {
     case 'OPEN_WINDOW': {
@@ -100,7 +100,7 @@ function windowsReducer(
       return {
         ...state,
         openWindows: state.openWindows.filter(
-          (w) => w.id !== action.payload.id
+          (w) => w.id !== action.payload.id,
         ),
       }
 
@@ -110,7 +110,7 @@ function windowsReducer(
         openWindows: state.openWindows.map((w) =>
           w.id === action.payload.id
             ? { ...w, isMinimized: true, isFocused: false }
-            : w
+            : w,
         ),
       }
 
@@ -120,7 +120,7 @@ function windowsReducer(
         openWindows: state.openWindows.map((w) =>
           w.id === action.payload.id
             ? { ...w, isMinimized: false, isFocused: true }
-            : w
+            : w,
         ),
       }
 
@@ -130,7 +130,7 @@ function windowsReducer(
         openWindows: state.openWindows.map((w) =>
           w.id === action.payload.id
             ? { ...w, zIndex: maxZ, isFocused: true }
-            : { ...w, isFocused: false }
+            : { ...w, isFocused: false },
         ),
         zCounter: maxZ,
       }
@@ -142,7 +142,7 @@ function windowsReducer(
         openWindows: state.openWindows.map((w) =>
           w.id === action.payload.id
             ? { ...w, x: action.payload.x, y: action.payload.y }
-            : w
+            : w,
         ),
       }
 
@@ -157,28 +157,28 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const openWindow = useCallback(
     (contentKey: string, title: string, icon: string) =>
       dispatch({ type: 'OPEN_WINDOW', payload: { contentKey, title, icon } }),
-    []
+    [],
   )
   const closeWindow = useCallback(
     (id: string) => dispatch({ type: 'CLOSE_WINDOW', payload: { id } }),
-    []
+    [],
   )
   const minimizeWindow = useCallback(
     (id: string) => dispatch({ type: 'MINIMIZE_WINDOW', payload: { id } }),
-    []
+    [],
   )
   const restoreWindow = useCallback(
     (id: string) => dispatch({ type: 'RESTORE_WINDOW', payload: { id } }),
-    []
+    [],
   )
   const focusWindow = useCallback(
     (id: string) => dispatch({ type: 'FOCUS_WINDOW', payload: { id } }),
-    []
+    [],
   )
   const moveWindow = useCallback(
     (id: string, x: number, y: number) =>
       dispatch({ type: 'MOVE_WINDOW', payload: { id, x, y } }),
-    []
+    [],
   )
 
   const value = useMemo(
@@ -199,7 +199,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       restoreWindow,
       focusWindow,
       moveWindow,
-    ]
+    ],
   )
 
   return (

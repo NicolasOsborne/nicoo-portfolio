@@ -1,4 +1,21 @@
+import { OsId } from '@/enums/OsId'
+
 export type Locale = 'en' | 'fr'
+
+type BiosEntry = {
+  id: OsId
+  label: string
+}
+
+export type BiosContent = {
+  title: string
+  subtitle: string
+  list: BiosEntry[]
+  navigation: string
+  language: string
+  boot: string
+  mobile: string
+}
 
 export type LoginContent = {
   title: string
@@ -123,6 +140,7 @@ export type ContactContent = {
 }
 
 export type Content = {
+  bios: BiosContent
   login: LoginContent
   desktop: DesktopContent
   about: AboutContent

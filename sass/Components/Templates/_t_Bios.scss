@@ -1,0 +1,156 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_Bios {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100vw;
+   height: 100vh;
+   background-color: $color-bios-background;
+   font-family: $font-bios;
+   color: $color-bios-text;
+   cursor: default;
+   user-select: none;
+
+   &_wrapper {
+      @include mixins.wrapper;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+      height: 90%;
+   }
+
+   &_header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+   }
+
+   &_inner {
+      width: 100%;
+      max-width: 640px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+   }
+
+   &_title {
+      font-size: 2.5rem;
+      text-align: center;
+   }
+
+   &_subtitle {
+      font-size: 1.5rem;
+      text-align: center;
+   }
+
+   &_menu {
+      border: 1px solid $color-bios-highlight;
+      padding: 8px 8px 64px 8px;
+   }
+
+   &_list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+   }
+
+   &_item {
+      display: block;
+      width: 100%;
+   }
+
+   &_entry {
+      appearance: none;
+      background: transparent;
+      border: none;
+      display: block;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      padding: 4px 6px;
+      font-size: 1rem;
+      color: $color-bios-text;
+
+      &-selected {
+         background-color: $color-bios-highlight;
+         color: $color-bios-background;
+      }
+   }
+
+   &_locale {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+   }
+
+   &_locale-entry {
+      appearance: none;
+      background: transparent;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      color: $color-bios-text;
+      cursor: pointer;
+      outline: none;
+      padding: 2px 8px;
+      letter-spacing: 0.05em;
+
+      &-selected {
+         background-color: $color-bios-highlight;
+         color: $color-bios-background;
+         border-color: $color-bios-highlight;
+      }
+
+      &-active {
+         outline: 1px solid $color-bios-highlight;
+         outline-offset: 2px;
+      }
+   }
+
+   &_footer {
+      width: 100%;
+   }
+
+   &_instructions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+   }
+
+   &_hint {
+      font-size: 1rem;
+      color: $color-bios-text;
+      text-align: center;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      &_wrapper {
+         height: 60%;
+      }
+
+      &_menu {
+         padding-bottom: 128px;
+      }
+
+      &_hint {
+         text-align: left;
+         margin-left: 1rem;
+      }
+   }
+}

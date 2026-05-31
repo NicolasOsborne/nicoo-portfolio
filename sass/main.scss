@@ -1,6 +1,7 @@
 // Settings
 @use 'Settings/variables';
 @use 'Settings/responsive_variables';
+@use 'Settings/os_themes';
 
 // Tools
 @use 'Tools/mixins';
@@ -18,10 +19,11 @@
 // Atoms
 @use 'Components/Atoms/a_Button';
 @use 'Components/Atoms/a_Clock';
-@use 'Components/Atoms/a_Control.scss';
+@use 'Components/Atoms/a_Control';
 @use 'Components/Atoms/a_DesktopIcon';
 @use 'Components/Atoms/a_LocaleSwitch';
 @use 'Components/Atoms/a_MenuItem';
+@use 'Components/Atoms/a_SpecsLine';
 @use 'Components/Atoms/a_TaskItem';
 
 // Molecules
@@ -29,6 +31,8 @@
 @use 'Components/Molecules/m_DesktopShortcuts';
 @use 'Components/Molecules/m_Menu';
 @use 'Components/Molecules/m_SkillsChecklist';
+@use 'Components/Molecules//m_SystemConfigDeviceTable';
+@use 'Components/Molecules//m_SystemConfigTable';
 @use 'Components/Molecules/m_Tabs';
 @use 'Components/Molecules/m_TaskList';
 @use 'Components/Molecules/m_TitleBar';
@@ -37,14 +41,21 @@
 @use 'Components/Organisms/o_LoginForm';
 @use 'Components/Organisms/o_Taskbar';
 @use 'Components/Organisms/o_Window';
+@use 'Components/Organisms/o_AboutWindow';
+@use 'Components/Organisms/o_ContactWindow';
+@use 'Components/Organisms/o_ExperiencesWindow';
+@use 'Components/Organisms/o_ProjectsWindow';
+@use 'Components/Organisms/o_SkillsWindow';
 
 // Pages
 @use 'Components/Pages/p_Desktop';
 @use 'Components/Pages/p_Login';
+@use 'Components/Pages/p_SpecsScreen';
+@use 'Components/Pages//p_SystemConfigScreen';
 
 // Templates
-@use 'Components/Templates/t_AboutWindow';
-@use 'Components/Templates/t_ContactWindow';
-@use 'Components/Templates/t_ExperiencesWindow';
-@use 'Components/Templates/t_ProjectsWindow';
-@use 'Components/Templates/t_SkillsWindow';
+@use 'Components/Templates/t_Bios';
+@use 'Components/Templates/t_Win95';
+@use 'Components/Templates/t_Win98';
+@use 'Components/Templates/t_WinXP';
+@use 'Components/Templates/t_Linux';

@@ -1,22 +1,41 @@
-import type { Metadata } from 'next'
 import { ReactNode } from 'react'
+import { Metadata } from 'next'
+import localFont from 'next/font/local'
+import classNames from 'classnames'
+
 import '@/../sass/main.scss'
 
 export const metadata: Metadata = {
   title: 'Nicoo | Portfolio',
-  description:
-    "Nicoo c'est qui ? Découvrez le portfolio de Nicolas Osborne, Développeur Front-End et Intégrateur Web à Grenoble.",
+  description: 'Nicolas Osborne, Développeur Front-End à Grenoble.',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type LayoutProps = {
   children: ReactNode
-}>) {
-  const lang = 'fr'
+}
+
+const perfectDOS = localFont({
+  src: '../../public/fonts/bios/perfectDOS.ttf',
+  display: 'swap',
+  variable: '--font-perfectDOS',
+})
+
+const win95 = localFont({
+  src: '../../public/fonts/Win95/w95fa.woff2',
+  display: 'swap',
+  variable: '--font-win95',
+})
+
+const RootLayout = async (props: Readonly<LayoutProps>) => {
+  const { children } = props
+
   return (
-    <html lang={lang} suppressHydrationWarning>
-      <body>{children}</body>
+    <html lang={'fr'} suppressHydrationWarning={true}>
+      <body className={classNames(perfectDOS.variable, win95.variable)}>
+        {children}
+      </body>
     </html>
   )
 }
+
+export default RootLayout

@@ -1,0 +1,68 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+
+.m_SystemConfigDeviceTable {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+   color: $color-bios-text;
+   width: 100%;
+
+   &_title {
+      @include typography.body-l;
+   }
+
+   &_cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+   }
+
+   &_card {
+      border: 1px solid $color-bios-text;
+      padding: 0.4rem 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+
+      &-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 1rem;
+         font-size: 0.85rem;
+      }
+
+      &-label {
+         color: $color-bios-text;
+         white-space: nowrap;
+      }
+
+      &-value {
+         color: $color-bios-highlight;
+         text-align: right;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_header {
+         border-bottom: 1px solid $color-bios-text;
+      }
+
+      &_table {
+         width: 100%;
+         border-collapse: collapse;
+      }
+
+      &_cell {
+         padding: 0.15rem 0.5rem;
+         text-align: center;
+         white-space: nowrap;
+
+         thead & {
+            font-weight: normal;
+            padding-bottom: 0.4rem;
+         }
+      }
+   }
+}
