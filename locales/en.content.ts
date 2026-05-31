@@ -3,7 +3,7 @@ import { Content } from '@/types/contentType'
 
 export const contentEn: Content = {
   bios: {
-    title: 'Nicoo - Portfolio',
+    title: 'Nicoo Portfolio',
     subtitle: 'Front-End Developer and Web Integrator',
     list: [
       {

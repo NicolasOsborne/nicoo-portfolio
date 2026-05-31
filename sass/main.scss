@@ -19,10 +19,11 @@
 // Atoms
 @use 'Components/Atoms/a_Button';
 @use 'Components/Atoms/a_Clock';
-@use 'Components/Atoms/a_Control.scss';
+@use 'Components/Atoms/a_Control';
 @use 'Components/Atoms/a_DesktopIcon';
 @use 'Components/Atoms/a_LocaleSwitch';
 @use 'Components/Atoms/a_MenuItem';
+@use 'Components/Atoms/a_SpecsLine';
 @use 'Components/Atoms/a_TaskItem';
 
 // Molecules

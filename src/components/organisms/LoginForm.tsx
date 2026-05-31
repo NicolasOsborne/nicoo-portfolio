@@ -8,7 +8,7 @@ import ControlType from '@/enums/ControlType'
 import { useContent } from '@/context/ContentContext'
 import Image from 'next/image'
 import classNames from 'classnames'
-import { USER } from '../../../data/users'
+import { USER } from '../../../content/users'
 
 export type LoginFormProps = {
   additionalClass?: string

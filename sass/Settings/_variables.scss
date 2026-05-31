@@ -55,3 +55,17 @@ $shadow-l: 0 2px 32px 0 rgba($color-black, 0.18);
 
 // ANIMATION
 $animation: 300ms;
+$biosCursorBlink: 1s step-start infinite;
+
+// KEYFRAMES
+@keyframes bios-cursor-blink {
+
+   0%,
+   100% {
+      opacity: 1;
+   }
+
+   50% {
+      opacity: 0;
+   }
+}

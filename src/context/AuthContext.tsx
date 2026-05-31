@@ -9,7 +9,7 @@ import {
   FC,
   ReactNode,
 } from 'react'
-import { USER } from '../../data/users'
+import { USER } from '../../content/users'
 
 type AuthContextType = {
   isAuthenticated: boolean
