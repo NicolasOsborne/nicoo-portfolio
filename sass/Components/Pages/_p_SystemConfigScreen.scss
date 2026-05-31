@@ -1,0 +1,42 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+
+.p_SystemConfigScreen {
+   width: 100dvw;
+   height: 100dvh;
+   overflow-x: hidden;
+   padding: 2rem;
+   background-color: $color-bios-background;
+   font-family: $font-bios;
+   font-size: 1rem;
+   line-height: 1.5;
+   color: $color-bios-text;
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+
+   &_title {
+      @include typography.body-l;
+      color: $color-bios-highlight;
+      text-align: center;
+   }
+
+   &_starting {
+      margin-top: auto;
+      font-size: 1.25rem;
+      color: $color-bios-emphasis;
+   }
+
+   &_cursor {
+      display: inline-block;
+      width: 0.5em;
+      height: 1rem;
+      background-color: $color-bios-emphasis;
+      animation: bios-cursor-blink $biosCursorBlink;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      gap: 3.5rem;
+   }
+}

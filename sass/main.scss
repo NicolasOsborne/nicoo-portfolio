@@ -31,6 +31,8 @@
 @use 'Components/Molecules/m_DesktopShortcuts';
 @use 'Components/Molecules/m_Menu';
 @use 'Components/Molecules/m_SkillsChecklist';
+@use 'Components/Molecules//m_SystemConfigDeviceTable';
+@use 'Components/Molecules//m_SystemConfigTable';
 @use 'Components/Molecules/m_Tabs';
 @use 'Components/Molecules/m_TaskList';
 @use 'Components/Molecules/m_TitleBar';
@@ -49,6 +51,7 @@
 @use 'Components/Pages/p_Desktop';
 @use 'Components/Pages/p_Login';
 @use 'Components/Pages/p_SpecsScreen';
+@use 'Components/Pages//p_SystemConfigScreen';
 
 // Templates
 @use 'Components/Templates/t_Bios';
