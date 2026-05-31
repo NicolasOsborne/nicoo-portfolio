@@ -5,7 +5,7 @@ export const bootSequences: Record<OsId, BootSequence> = {
   win95: [
     { step: 'specs', duration: 5000 },
     { step: 'systemconfig', duration: 2500 },
-    // { step: 'logo', duration: 3500 },
+    { step: 'logo', duration: 3500 },
     // { step: 'login' },
     // { step: 'desktop' },
   ],
