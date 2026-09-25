@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation'
 import { useCurrentLocale } from '@/hooks/useCurrentLocale'
 import { OsId } from '@/enums/OsId'
 import { useContent } from '@/context/ContentContext'
-import useMediaQuery, { ResponsiveSize } from '@/hooks/useMediaQuery'
+import useMediaQuery from '@/hooks/useMediaQuery'
+import { ResponsiveSize } from '@/enums/ResponsiveSize'
 import { i18nConfig } from '@/utils/i18n'
 
 type FocusSection = 'os' | 'locale'
@@ -64,7 +65,10 @@ const Bios: FC = () => {
           case 'Enter':
             boot(content.bios.list[selectedIndex].id)
             break
+          case 'ArrowRight':
+          case 'ArrowLeft':
           case 'Tab':
+          case 'Escape':
             e.preventDefault()
             setFocusSection('locale')
             break
@@ -85,8 +89,10 @@ const Bios: FC = () => {
             applyLocale(localeIndex)
             setFocusSection('os')
             break
-          case 'Tab':
+          case 'ArrowUp':
+          case 'ArrowDown':
           case 'Escape':
+          case 'Tab':
             e.preventDefault()
             setFocusSection('os')
             break
@@ -126,11 +132,10 @@ const Bios: FC = () => {
                   <button
                     type='button'
                     aria-current={index === selectedIndex ? 'true' : undefined}
-                    className={`${componentsClass}_entry ${
-                      index === selectedIndex
-                        ? `${componentsClass}_entry-selected`
-                        : ''
-                    }`}
+                    className={`${componentsClass}_entry ${index === selectedIndex
+                      ? `${componentsClass}_entry-selected`
+                      : ''
+                      }`}
                     onClick={() => boot(entry.id)}
                     onMouseEnter={() => {
                       setSelectedIndex(index)
@@ -151,15 +156,13 @@ const Bios: FC = () => {
               <button
                 key={locale}
                 type='button'
-                className={`${componentsClass}_locale-entry${
-                  index === localeIndex
-                    ? ` ${componentsClass}_locale-entry-selected`
-                    : ''
-                }${
-                  focusSection === 'locale'
+                className={`${componentsClass}_locale-entry${index === localeIndex
+                  ? ` ${componentsClass}_locale-entry-selected`
+                  : ''
+                  }${focusSection === 'locale'
                     ? ` ${componentsClass}_locale-entry-active`
                     : ''
-                }`}
+                  }`}
                 onClick={() => applyLocale(index)}
                 onMouseEnter={() => {
                   setLocaleIndex(index)

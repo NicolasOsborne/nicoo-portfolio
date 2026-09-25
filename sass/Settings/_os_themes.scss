@@ -1,31 +1,24 @@
 @use '../Settings/variables' as *;
 
 $osThemes: (
-   'win95': ( // Typography
-      'font': $font-win95,
+   'win95': ('font': $font-win95,
       'font-size': 11px,
-      // Surfaces
       'desktop-bg': #008080,
       'window-face': #c3c7cb,
       'button-face': #c3c7cb,
-      // Text
       'text-color': #000000,
       'text-disabled': #868a8e,
-      // Button anatomy
       'button-highlight': #ffffff,
       'button-shadow': #868a8e,
       'button-border': #000000,
-      // Titlebar
       'titlebar-active-from': #000080,
       'titlebar-active-to': #000080,
       'titlebar-inactive-from': #868a8e,
       'titlebar-inactive-to': #868a8e,
       'titlebar-text': #ffffff,
       'titlebar-height': 18px,
-      // Taskbar
       'taskbar-bg': #c3c7cb,
       'taskbar-height': 28px,
-      // Misc
       'highlight': #1084d0,
       'color-white': #ffffff,
       'color-black': #000000,

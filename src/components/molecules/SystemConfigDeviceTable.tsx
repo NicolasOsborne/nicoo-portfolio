@@ -1,7 +1,8 @@
 'use client'
 
-import useMediaQuery, { ResponsiveSize } from '@/hooks/useMediaQuery'
 import { FC } from 'react'
+import useMediaQuery from '@/hooks/useMediaQuery'
+import { ResponsiveSize } from '@/enums/ResponsiveSize'
 
 type SystemConfigDeviceTableProps = {
   title: string
