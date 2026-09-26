@@ -28,39 +28,50 @@ export function useSpecsLines(osId: OsId): SpecLine[] {
     const memoryRaw = nav.deviceMemory ? nav.deviceMemory * 1024 : 262144
     const language = nav.language ?? 'en-US'
 
-    let cursor = 0
-    const next = (base: number, variance = 80) => {
-      cursor += randomDelay(base, variance)
-      return cursor
-    }
+    const nextDelays = [
+      [0, 80],
+      [100, 40],
+      [200, 60],
+      [350, 100],
+      [500, 80],
+      [200, 80],
+      [300, 60],
+      [200, 80],
+      ...content.ideLines.map((_, index) => [180 + index * 20, 100]),
+    ].reduce<number[]>((delays, [base, variance]) => {
+      const previous = delays[delays.length - 1] ?? 0
+      return [...delays, previous + randomDelay(base, variance)]
+    }, [])
+    let delayIndex = 0
+    const next = () => nextDelays[delayIndex++]
 
     return [
-      { id: 'bios', text: content.biosLine, delay: next(0) },
-      { id: 'copy', text: content.copyright, delay: next(100, 40) },
-      { id: 'blank1', text: '', delay: next(200, 60) },
+      { id: 'bios', text: content.biosLine, delay: next() },
+      { id: 'copy', text: content.copyright, delay: next() },
+      { id: 'blank1', text: '', delay: next() },
       {
         id: 'cpu',
         text: `CPU: ${platform} at ${cores} Logical Processor(s)`,
-        delay: next(350, 100),
+        delay: next(),
       },
       {
         id: 'memory',
         text: 'Memory Test :  ',
-        delay: next(500, 80),
+        delay: next(),
         type: 'memory',
         memoryTarget: memoryRaw,
       },
       {
         id: 'lang',
         text: `System Language : ${language}`,
-        delay: next(200, 80),
+        delay: next(),
       },
-      { id: 'blank2', text: '', delay: next(300, 60) },
-      { id: 'plugin', text: content.pluginLine, delay: next(200, 80) },
+      { id: 'blank2', text: '', delay: next() },
+      { id: 'plugin', text: content.pluginLine, delay: next() },
       ...content.ideLines.map((line, i) => ({
         id: `ide${i}`,
         text: line,
-        delay: next(180 + i * 20, 100),
+        delay: next(),
       })),
     ]
   }, [osId])

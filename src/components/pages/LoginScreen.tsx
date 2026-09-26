@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import { BootScreenProps } from '@/types/bootType'
 
 const LoginScreen: FC<BootScreenProps> = (props) => {
-  const { additionalClass, osId, onComplete } = props
+  const { additionalClass, onComplete } = props
 
   const componentsClass = 'p_Login'
 

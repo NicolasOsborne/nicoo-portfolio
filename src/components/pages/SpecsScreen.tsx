@@ -23,7 +23,7 @@ const SpecsScreen: FC<BootScreenProps> = (props) => {
   const lines = useSpecsLines(osId)
 
   const [visibleCount, setVisibleCount] = useState(0)
-  const [currentTime, setCurrentTime] = useState<Date | null>(null)
+  const [currentTime, setCurrentTime] = useState<Date>(() => new Date())
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
   const componentsClass = 'p_SpecsScreen'
@@ -41,7 +41,6 @@ const SpecsScreen: FC<BootScreenProps> = (props) => {
   }, [handleBackToBios])
 
   useEffect(() => {
-    setCurrentTime(new Date())
     const clockInterval = setInterval(() => setCurrentTime(new Date()), 1000)
 
     lines.forEach((line, index) => {
@@ -53,17 +52,15 @@ const SpecsScreen: FC<BootScreenProps> = (props) => {
     timeoutsRef.current.push(completion)
 
     return () => {
-      clockInterval && clearInterval(clockInterval)
+      clearInterval(clockInterval)
       timeoutsRef.current.forEach(clearTimeout)
     }
   }, [])
 
-  const now = currentTime ?? new Date()
+  const now = currentTime
 
   const dateStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`
-  const timeStr = currentTime
-    ? `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`
-    : '--:--:--'
+  const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`
 
   return (
     <div className={classNames(componentsClass, additionalClass)}>

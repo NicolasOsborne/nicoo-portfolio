@@ -1,4 +1,5 @@
 @use '../Settings/variables' as *;
+@use '../Settings/os_themes';
 @use '../Tools/typography';
 
 html,
@@ -11,12 +12,12 @@ body {
    @include typography.body;
    margin: 0;
    padding: 0;
-   color: $text-color;
-   font-family: $font-text;
+   @include os_themes.themed(color, color, text);
+   @include os_themes.themed(font-family, type, font);
    font-weight: 500;
    -webkit-font-smoothing: none;
    -moz-osx-font-smoothing: grayscale;
-   background-color: $color-background;
+   @include os_themes.themed(background-color, color, desktop);
 }
 
 .page,

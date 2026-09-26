@@ -7,7 +7,6 @@ import {
   useState,
   FC,
   ReactNode,
-  useEffect,
 } from 'react'
 import { Content, Locale } from '@/types/contentType'
 import { getContent, i18nConfig } from '@/utils/i18n'
@@ -32,10 +31,6 @@ const ContentProvider: FC<ContentProviderProps> = (props) => {
   const [content, setContent] = useState<Content>(() =>
     getContent(initialLocale),
   )
-
-  useEffect(() => {
-    document.documentElement.lang = locale
-  }, [locale])
 
   const setLocale = (next: Locale) => {
     if (!i18nConfig.locales.includes(next)) return

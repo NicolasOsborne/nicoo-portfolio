@@ -11,11 +11,15 @@ import { useAuth } from '@/context/AuthContext'
 import { useWindows } from '@/context/WindowContext'
 import TaskList from '../molecules/TaskList'
 import DesktopIcon from '@/enums/DesktopIcon'
+import { useTheme } from '@/context/ThemeContext'
+import { useRouter } from 'next/navigation'
 
 const TaskBar: FC = () => {
   const { content, locale } = useContent()
   const { logout } = useAuth()
-  const { openWindow } = useWindows()
+  const { openWindow, resetWindows } = useWindows()
+  const { osId } = useTheme()
+  const router = useRouter()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -43,9 +47,12 @@ const TaskBar: FC = () => {
         <Menu
           entries={content.desktop.menu.list}
           logoutLabel={content.desktop.logout}
+          osId={osId}
           onLogout={() => {
             setIsMenuOpen(false)
             logout()
+            resetWindows()
+            router.push(`/${locale}`)
           }}
           onItemClick={(key) => {
             const entry = content.desktop.menu.list.find(

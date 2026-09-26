@@ -1,4 +1,5 @@
 @use '../Settings/variables' as *;
+@use '../Settings/os_themes';
 
 * {
    box-sizing: border-box;
@@ -41,7 +42,7 @@ ol {
 
 input,
 textarea {
-   font-family: $font-text;
+   @include os_themes.themed(font-family, type, font);
 }
 
 i,
@@ -53,5 +54,5 @@ button {
    padding: 0;
    background: none;
    border: none;
-   font-family: $font-text;
+   @include os_themes.themed(font-family, type, font);
 }
