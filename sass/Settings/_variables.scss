@@ -1,10 +1,14 @@
 // FONTS
-$font-bios: 'perfectDOS', monospace;
-$font-win95: 'Win95', sans-serif;
+$font-bios: var(--font-bios), 'PerfectDOS', monospace;
+$font-win95: var(--font-win95), 'Win95', sans-serif;
+$font-win98: var(--font-win98), 'MS Sans Serif', sans-serif;
+$font-winXP: var(--font-winXP), Tahoma, sans-serif;
+$font-linux: var(--font-linux), Ubuntu, sans-serif;
+$font-linux-mono: var(--font-linux-mono), 'Ubuntu Mono', monospace;
 
 // Fallbacks
-$font-text: 'Win95', sans-serif;
-$font-title: 'Win95', sans-serif;
+$font-text: $font-win95;
+$font-title: $font-win95;
 
 // COLORS
 // Basic

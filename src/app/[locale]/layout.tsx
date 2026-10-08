@@ -15,15 +15,75 @@ type LocaleLayoutProps = {
 }
 
 const perfectDOS = localFont({
-  src: '../../../public/fonts/bios/perfectDOS.ttf',
+  src: '../../../public/fonts/bios/PerfectDOS.ttf',
   display: 'swap',
-  variable: '--font-perfectDOS',
+  variable: '--font-bios',
 })
 
 const win95 = localFont({
   src: '../../../public/fonts/Win95/w95fa.woff2',
   display: 'swap',
   variable: '--font-win95',
+})
+
+const win98 = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/win98/MSSansSerif.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../../public/fonts/win98/MSSansSerifBold.ttf',
+      weight: '700',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-win98',
+})
+
+const winXP = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/winXP/Tahoma.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../../public/fonts/winXP/TahomaBold.ttf',
+      weight: '700',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-winXP',
+})
+
+const ubuntu = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/linux/UbuntuRegular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../../public/fonts/linux/UbuntuBold.ttf',
+      weight: '700',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-linux',
+})
+
+const ubuntuMono = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/linux/UbuntuMonoRegular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../../public/fonts/linux/UbuntuMonoBold.ttf',
+      weight: '700',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-linux-mono',
 })
 
 export function generateStaticParams() {
@@ -37,7 +97,7 @@ export async function generateMetadata({
   const isFrench = locale === 'fr'
 
   return {
-    title: isFrench ? 'Nicoo | Portfolio' : 'Nicoo | Portfolio',
+    title: 'Nicoo | Portfolio',
     description: isFrench
       ? 'Nicolas Osborne, Développeur Front-End à Grenoble.'
       : 'Nicolas Osborne, Front-End Developer in Grenoble.',
@@ -60,7 +120,16 @@ const LocaleLayout = async (props: Readonly<LocaleLayoutProps>) => {
 
   return (
     <html lang={locale}>
-      <body className={classNames(perfectDOS.variable, win95.variable)}>
+      <body
+        className={classNames(
+          perfectDOS.variable,
+          win95.variable,
+          win98.variable,
+          winXP.variable,
+          ubuntu.variable,
+          ubuntuMono.variable,
+        )}
+      >
         <ContentProvider initialLocale={locale as Locale}>
           <AuthProvider>{children}</AuthProvider>
         </ContentProvider>

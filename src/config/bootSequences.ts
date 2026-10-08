@@ -22,5 +22,8 @@ export const bootSequences: Record<OsId, BootSequence> = {
     { step: 'login' },
     { step: 'desktop' },
   ],
-  linux: [{ step: 'desktop' }],
+  linux: [
+    { step: 'logo', duration: 4000 },
+    { step: 'desktop' },
+  ],
 }
