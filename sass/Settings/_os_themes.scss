@@ -1,99 +1,144 @@
-@use '../Settings/variables' as *;
+@use 'sass:map';
+@use 'sass:list';
+@use 'variables' as *;
 
-$osThemes: (
-   'win95': ( // Typography
-      'font': $font-win95,
-      'font-size': 11px,
-      // Surfaces
-      'desktop-bg': #008080,
-      'window-face': #c3c7cb,
-      'button-face': #c3c7cb,
-      // Text
-      'text-color': #000000,
-      'text-disabled': #868a8e,
-      // Button anatomy
-      'button-highlight': #ffffff,
-      'button-shadow': #868a8e,
-      'button-border': #000000,
-      // Titlebar
-      'titlebar-active-from': #000080,
-      'titlebar-active-to': #000080,
-      'titlebar-inactive-from': #868a8e,
-      'titlebar-inactive-to': #868a8e,
-      'titlebar-text': #ffffff,
-      'titlebar-height': 18px,
-      // Taskbar
-      'taskbar-bg': #c3c7cb,
-      'taskbar-height': 28px,
-      // Misc
-      'highlight': #1084d0,
-      'color-white': #ffffff,
-      'color-black': #000000,
+// Every OS owns the same contract. Keep these keys identical across themes.
+$os-token-keys: (
+   'color': ('desktop', 'surface', 'control', 'text', 'disabled', 'highlight', 'shadow', 'border', 'titlebar-text', 'white', 'black', 'titlebar-active-from', 'titlebar-active-to', 'titlebar-inactive-from', 'titlebar-inactive-to'),
+   'type': ('font', 'size', 'weight', 'line-height', 'title-font', 'title-size'),
+   'space': ('titlebar-height', 'taskbar-height', 'titlebar-padding', 'control-gap', 'control-size', 'window-padding', 'content-padding', 'section-gap'),
+   'border': ('raised', 'pressed', 'sunken', 'window', 'width', 'radius'),
+   'shadow': ('control-raised', 'raised', 'pressed', 'sunken', 'window', 'focus', 'title'),
+   'motion': ('duration', 'transition', 'cursor'),
+   'layer': ('window', 'desktop', 'taskbar', 'overlay'),
+   'chrome': ('titlebar-active', 'titlebar-inactive', 'taskbar', 'control', 'desktop', 'window'),
+);
+
+$os-themes: (
+   'win95': (
+      'color': ('desktop': #008080, 'surface': #c3c7cb, 'control': #c3c7cb, 'text': #000000, 'disabled': #868a8e, 'highlight': #1084d0, 'shadow': #868a8e, 'border': #000000, 'titlebar-text': #ffffff, 'white': #ffffff, 'black': #000000),
+      'type': ('font': $font-win95, 'size': 11px),
+      'space': ('titlebar-height': 18px, 'taskbar-height': 28px),
+      'border': (
+         'raised': (inset 1px 1px 0 1px #ffffff, inset 0 0 0 1px #868a8e, 1px 1px 0 0 #000000),
+         'pressed': (inset 0 0 0 0, inset 1px 1px 0 0 #868a8e, inset -1px -1px 0 0 #c3c7cb),
+         'sunken': (inset 0 0 0 0, inset 1px 1px 0 0 #868a8e, .5px .5px 0 .5px #ffffff),
+         'window': (inset .5px .5px 0 .5px #ffffff, inset 0 0 0 1px #868a8e, 1px 0 0 0 #000000, 1px 1px 0 0 #000000),
+      ),
+      'shadow': ('control-raised': (inset 1px 1px 0 0 #ffffff, inset 0 0 0 1px #868a8e, 1px 1px 0 0 #000000)),
+      'motion': ('duration': 300ms),
+      'layer': ('window': 20, 'desktop': 1, 'taskbar': 998),
+      'chrome': ('titlebar-active': linear-gradient(90deg, #000080, #000080), 'titlebar-inactive': linear-gradient(90deg, #868a8e, #868a8e), 'taskbar': #c3c7cb),
    ),
-   'win98': ('font': ('MS Sans Serif', sans-serif),
-      'font-size': 11px,
-      'desktop-bg': #008080,
-      'window-face': #d4d0c8,
-      'button-face': #d4d0c8,
-      'text-color': #000000,
-      'text-disabled': #808080,
-      'button-highlight': #ffffff,
-      'button-shadow': #808080,
-      'button-border': #000000,
-      'titlebar-active-from': #000080,
-      'titlebar-active-to': #1084d0,
-      'titlebar-inactive-from': #808080,
-      'titlebar-inactive-to': #b5b5b5,
-      'titlebar-text': #ffffff,
-      'titlebar-height': 18px,
-      'taskbar-bg': #c0c0c0,
-      'taskbar-height': 28px,
-      'highlight': #000080,
-      'color-white': #ffffff,
-      'color-black': #000000,
+   'win98': (
+      'color': ('desktop': #008080, 'surface': #d4d0c8, 'control': #d4d0c8, 'text': #000000, 'disabled': #808080, 'highlight': #000080, 'shadow': #808080, 'border': #000000, 'titlebar-text': #ffffff, 'white': #ffffff, 'black': #000000),
+      'type': ('font': ('MS Sans Serif', sans-serif), 'size': 11px),
+      'space': ('titlebar-height': 18px, 'taskbar-height': 28px),
+      'border': ('raised': (inset 1px 1px 0 1px #ffffff, inset 0 0 0 1px #808080, 1px 1px 0 0 #000000), 'pressed': (inset 0 0 0 0, inset 1px 1px 0 0 #808080, inset -1px -1px 0 0 #d4d0c8), 'sunken': (inset 0 0 0 0, inset 1px 1px 0 0 #808080, .5px .5px 0 .5px #ffffff), 'window': (inset .5px .5px 0 .5px #ffffff, inset 0 0 0 1px #808080, 1px 0 0 0 #000000, 1px 1px 0 0 #000000)),
+      'shadow': ('control-raised': (inset 1px 1px 0 0 #ffffff, inset 0 0 0 1px #808080, 1px 1px 0 0 #000000)),
+      'motion': ('duration': 300ms),
+      'layer': ('window': 20, 'desktop': 1, 'taskbar': 998),
+      'chrome': ('titlebar-active': linear-gradient(90deg, #000080, #1084d0), 'titlebar-inactive': linear-gradient(90deg, #808080, #b5b5b5), 'taskbar': #c0c0c0),
    ),
-   'winxp': ('font': ('Tahoma', sans-serif),
-      'font-size': 11px,
-      'desktop-bg': #3a6ea5,
-      'window-face': #ece9d8,
-      'button-face': #ece9d8,
-      'text-color': #000000,
-      'text-disabled': #a0a0a0,
-      'button-highlight': #ffffff,
-      'button-shadow': #a0a0a0,
-      'button-border': #003c74,
-      'titlebar-active-from': #2d9ce3,
-      'titlebar-active-to': #1266b3,
-      'titlebar-inactive-from': #a5b5c5,
-      'titlebar-inactive-to': #8a9ab5,
-      'titlebar-text': #ffffff,
-      'titlebar-height': 30px,
-      'taskbar-bg': #245edb,
-      'taskbar-height': 40px,
-      'highlight': #316ac5,
-      'color-white': #ffffff,
-      'color-black': #000000,
+   'winXP': (
+      'color': ('desktop': #3a6ea5, 'surface': #ece9d8, 'control': #ece9d8, 'text': #000000, 'disabled': #a0a0a0, 'highlight': #316ac5, 'shadow': #a0a0a0, 'border': #003c74, 'titlebar-text': #ffffff, 'white': #ffffff, 'black': #000000),
+      'type': ('font': ('Tahoma', sans-serif), 'size': 11px),
+      'space': ('titlebar-height': 30px, 'taskbar-height': 40px),
+      'border': ('raised': (inset 1px 1px 0 1px #ffffff, inset 0 0 0 1px #a0a0a0, 1px 1px 0 0 #003c74), 'pressed': (inset 0 0 0 0, inset 1px 1px 0 0 #a0a0a0, inset -1px -1px 0 0 #ece9d8), 'sunken': (inset 0 0 0 0, inset 1px 1px 0 0 #a0a0a0, .5px .5px 0 .5px #ffffff), 'window': (inset .5px .5px 0 .5px #ffffff, inset 0 0 0 1px #a0a0a0, 1px 0 0 0 #003c74, 1px 1px 0 0 #003c74)),
+      'shadow': ('control-raised': (inset 1px 1px 0 0 #ffffff, inset 0 0 0 1px #a0a0a0, 1px 1px 0 0 #003c74)),
+      'motion': ('duration': 300ms),
+      'layer': ('window': 20, 'desktop': 1, 'taskbar': 998),
+      'chrome': ('titlebar-active': linear-gradient(90deg, #2d9ce3, #1266b3), 'titlebar-inactive': linear-gradient(90deg, #a5b5c5, #8a9ab5), 'taskbar': #245edb),
    ),
-   'linux': ('font': ('JetBrains Mono', monospace),
-      'font-size': 13px,
-      'desktop-bg': #1a1a2e,
-      'window-face': #2d2d2d,
-      'button-face': #333333,
-      'text-color': #00ff41,
-      'text-disabled': #4a4a4a,
-      'button-highlight': #00ff41,
-      'button-shadow': #003300,
-      'button-border': #00ff41,
-      'titlebar-active-from': #1a1a1a,
-      'titlebar-active-to': #1a1a1a,
-      'titlebar-inactive-from': #111111,
-      'titlebar-inactive-to': #111111,
-      'titlebar-text': #00ff41,
-      'titlebar-height': 24px,
-      'taskbar-bg': #111111,
-      'taskbar-height': 32px,
-      'highlight': #00ff41,
-      'color-white': #ffffff,
-      'color-black': #000000,
+   'linux': (
+      'color': ('desktop': #1a1a2e, 'surface': #2d2d2d, 'control': #333333, 'text': #00ff41, 'disabled': #4a4a4a, 'highlight': #00ff41, 'shadow': #003300, 'border': #00ff41, 'titlebar-text': #00ff41, 'white': #ffffff, 'black': #000000),
+      'type': ('font': ('JetBrains Mono', monospace), 'size': 13px),
+      'space': ('titlebar-height': 24px, 'taskbar-height': 32px),
+      'border': ('raised': (inset 1px 1px 0 1px #00ff41, inset 0 0 0 1px #003300, 1px 1px 0 0 #00ff41), 'pressed': (inset 0 0 0 0, inset 1px 1px 0 0 #003300, inset -1px -1px 0 0 #333333), 'sunken': (inset 0 0 0 0, inset 1px 1px 0 0 #003300, .5px .5px 0 .5px #00ff41), 'window': (inset .5px .5px 0 .5px #00ff41, inset 0 0 0 1px #003300, 1px 0 0 0 #00ff41, 1px 1px 0 0 #00ff41)),
+      'shadow': ('control-raised': (inset 1px 1px 0 0 #00ff41, inset 0 0 0 1px #003300, 1px 1px 0 0 #00ff41)),
+      'motion': ('duration': 300ms),
+      'layer': ('window': 20, 'desktop': 1, 'taskbar': 998),
+      'chrome': ('titlebar-active': linear-gradient(90deg, #1a1a1a, #1a1a1a), 'titlebar-inactive': linear-gradient(90deg, #111111, #111111), 'taskbar': #111111),
    ),
 );
+
+// Shared structural tokens are still explicit in every OS theme, while the
+// visual values above remain free to differ between operating systems.
+@each $os, $theme in $os-themes {
+   $colors: map.get($theme, 'color');
+   $type: map.get($theme, 'type');
+   $space: map.get($theme, 'space');
+   $borders: map.get($theme, 'border');
+   $shadows: map.get($theme, 'shadow');
+   $chrome: map.get($theme, 'chrome');
+   $os-themes: map.merge($os-themes, (
+      $os: map.merge($theme, (
+         'color': map.merge($colors, (
+            'titlebar-active-from': map.get($chrome, 'titlebar-active'),
+            'titlebar-active-to': map.get($chrome, 'titlebar-active'),
+            'titlebar-inactive-from': map.get($chrome, 'titlebar-inactive'),
+            'titlebar-inactive-to': map.get($chrome, 'titlebar-inactive'),
+         )),
+         'type': map.merge($type, ('weight': 400, 'line-height': 1, 'title-font': map.get($type, 'font'), 'title-size': 16px)),
+         'space': map.merge($space, ('titlebar-padding': 2px 4px, 'control-gap': 3px, 'control-size': 16px, 'window-padding': 2px, 'content-padding': 8px, 'section-gap': 6px)),
+         'border': map.merge($borders, ('width': 1px, 'radius': 0)),
+         'shadow': map.merge($shadows, (
+            'raised': map.get($borders, 'raised'),
+            'pressed': map.get($borders, 'pressed'),
+            'sunken': map.get($borders, 'sunken'),
+            'window': map.get($borders, 'window'),
+            'focus': 0 0 0 1px map.get($colors, 'border'),
+            'title': 1px 1px 0 map.get($colors, 'black'),
+         )),
+         'motion': ('duration': 300ms, 'transition': all 300ms, 'cursor': grab),
+         'layer': ('window': 20, 'desktop': 1, 'taskbar': 998, 'overlay': 1000),
+         'chrome': map.merge($chrome, ('control': map.get($colors, 'control'), 'desktop': map.get($colors, 'desktop'), 'window': map.get($colors, 'surface'))),
+      )),
+   ));
+}
+
+@function os-token($os, $category, $key) {
+   @if not map.has-key($os-themes, $os) or not map.has-key(map.get($os-themes, $os), $category) or not map.has-key(map.get($os-themes, $os, $category), $key) {
+      @error "Unknown OS token `#{$os}/#{$category}/#{$key}`.";
+   }
+   @return map.get($os-themes, $os, $category, $key);
+}
+
+@mixin theme-rule($property, $token) {
+   $category: list.nth($token, 1);
+   $key: list.nth($token, 2);
+   @each $os, $theme in $os-themes {
+      @at-root [data-os='#{$os}'] #{&} {
+         #{$property}: os-token($os, $category, $key);
+      }
+   }
+}
+
+@mixin themed($property, $category, $key) {
+   @include theme-rule($property, ($category, $key));
+}
+
+@each $os, $theme in $os-themes {
+   @each $category, $keys in $os-token-keys {
+      @if not map.has-key($theme, $category) {
+         @error "Theme `#{$os}` is missing category `#{$category}`.";
+      }
+      @each $key in $keys {
+         @if not map.has-key(map.get($theme, $category), $key) {
+            @error "Theme `#{$os}` is missing token `#{$category}/#{$key}`.";
+         }
+      }
+   }
+}
+
+@if map.keys(map.get($os-themes, 'win95')) != map.keys(map.get($os-themes, 'win98')) or map.keys(map.get($os-themes, 'win95')) != map.keys(map.get($os-themes, 'winXP')) or map.keys(map.get($os-themes, 'win95')) != map.keys(map.get($os-themes, 'linux')) {
+   @error 'OS theme category sets must be identical.';
+}
+
+@each $category, $keys in map.get($os-themes, 'win95') {
+   @each $os in ('win98', 'winXP', 'linux') {
+      @if map.keys($keys) != map.keys(map.get($os-themes, $os, $category)) {
+         @error "OS theme key sets must match win95 for `#{$category}`.";
+      }
+   }
+}

@@ -1,18 +1,18 @@
-@use '../../Settings/variables' as *;
-@use '../../Tools/typography';
-@use '../../Tools/mixins';
+@use '../../Settings/os_themes';
 
 .m_TitleBar {
-   @include typography.body-bold;
-
-   cursor: grab;
-   background: linear-gradient(90deg, $color-blue, $color-highlight);
-   height: 24px;
-   padding: 2px 4px;
+   @include os_themes.themed(font-family, type, font);
+   @include os_themes.themed(font-size, type, size);
+   @include os_themes.themed(font-weight, type, weight);
+   @include os_themes.themed(line-height, type, line-height);
+   @include os_themes.themed(cursor, motion, cursor);
+   @include os_themes.themed(background, chrome, titlebar-active);
+   @include os_themes.themed(height, space, titlebar-height);
+   @include os_themes.themed(padding, space, titlebar-padding);
    display: flex;
    justify-content: space-between;
    align-items: center;
-   color: $color-white;
+   @include os_themes.themed(color, color, titlebar-text);
    user-select: none;
 
    &:active {
@@ -20,13 +20,13 @@
    }
 
    &_unfocus {
-      background: linear-gradient(90deg, $color-grey-dark, $color-grey);
+      @include os_themes.themed(background, chrome, titlebar-inactive);
    }
 
    &_title {
-      color: $color-white;
+      @include os_themes.themed(color, color, titlebar-text);
       font-weight: bold;
-      text-shadow: 1px 1px 0 $color-black;
+      @include os_themes.themed(text-shadow, shadow, title);
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -34,16 +34,15 @@
    }
 
    &_controls {
-      display: flex;
-      gap: 3px;
+      @include os_themes.themed(gap, space, control-gap);
 
       button {
-         @include mixins.border-raised;
+         @include os_themes.themed(box-shadow, shadow, control-raised);
 
-         width: 16px;
-         height: 16px;
+         @include os_themes.themed(width, space, control-size);
+         @include os_themes.themed(height, space, control-size);
          padding: 0;
-         background-color: $button-face;
+         @include os_themes.themed(background-color, color, control);
          display: flex;
          justify-content: center;
          align-items: center;
@@ -51,9 +50,7 @@
          line-height: 0;
          cursor: pointer;
 
-         &:active {
-            @include mixins.border-sunken;
-         }
+         &:active { @include os_themes.themed(box-shadow, shadow, pressed); }
       }
    }
 }

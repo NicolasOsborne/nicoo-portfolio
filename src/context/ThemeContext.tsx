@@ -3,7 +3,7 @@
 import {
   createContext,
   useContext,
-  useEffect,
+  useLayoutEffect,
   FC,
   ReactNode,
   useMemo,
@@ -27,7 +27,7 @@ type ThemeProviderProps = {
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, osId }) => {
   const theme = osConfigs[osId]
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.os = osId
     return () => {
       delete document.documentElement.dataset.os

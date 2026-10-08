@@ -1,13 +1,14 @@
 @use '../../Settings/variables' as *;
+@use '../../Settings/os_themes';
 @use '../../Tools/mixins';
 
 .a_Control {
-   @include mixins.border-raised;
+   @include os_themes.themed(box-shadow, shadow, control-raised);
 
    width: 16px;
    height: 16px;
    padding: 0;
-   background-color: $button-face;
+   @include os_themes.themed(background-color, color, control);
    display: flex;
    justify-content: center;
    align-items: center;

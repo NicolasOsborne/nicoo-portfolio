@@ -1,11 +1,12 @@
 @use '../../Settings/variables' as *;
+@use '../../Settings/os_themes';
 @use '../../Settings/responsive_variables';
 @use '../../Tools/mixins';
 
 .o_Window {
    @include mixins.border-window;
 
-   background-color: $window-face;
+   @include os_themes.themed(background-color, color, surface);
    border: none;
    padding: 2px;
    box-sizing: border-box;
@@ -15,7 +16,7 @@
    &_content {
       @include mixins.border-flat;
 
-      background-color: $window-face;
+      @include os_themes.themed(background-color, color, surface);
       padding: 8px;
       overflow: auto;
    }

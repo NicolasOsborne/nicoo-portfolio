@@ -36,6 +36,7 @@ type WindowsAction =
   | { type: 'RESTORE_WINDOW'; payload: { id: string } }
   | { type: 'FOCUS_WINDOW'; payload: { id: string } }
   | { type: 'MOVE_WINDOW'; payload: { id: string; x: number; y: number } }
+  | { type: 'RESET_WINDOWS' }
 
 const WindowsContext = createContext<{
   openWindows: OpenWindow[]
@@ -45,6 +46,7 @@ const WindowsContext = createContext<{
   restoreWindow: (id: string) => void
   focusWindow: (id: string) => void
   moveWindow: (id: string, x: number, y: number) => void
+  resetWindows: () => void
 } | null>(null)
 
 const initialState: WindowsState = {
@@ -146,6 +148,9 @@ function windowsReducer(
         ),
       }
 
+    case 'RESET_WINDOWS':
+      return initialState
+
     default:
       return state
   }
@@ -180,6 +185,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       dispatch({ type: 'MOVE_WINDOW', payload: { id, x, y } }),
     [],
   )
+  const resetWindows = useCallback(() => dispatch({ type: 'RESET_WINDOWS' }), [])
 
   const value = useMemo(
     () => ({
@@ -190,6 +196,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       restoreWindow,
       focusWindow,
       moveWindow,
+      resetWindows,
     }),
     [
       state.openWindows,
@@ -199,6 +206,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       restoreWindow,
       focusWindow,
       moveWindow,
+      resetWindows,
     ],
   )
 

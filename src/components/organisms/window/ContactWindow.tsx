@@ -8,7 +8,7 @@ const ContactWindow: FC = () => {
   const { content } = useContent()
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting] = useState(false)
 
   const componentsClass = 'o_ContactWindow'
 

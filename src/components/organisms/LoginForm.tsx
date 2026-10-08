@@ -21,8 +21,8 @@ const LoginForm: FC<LoginFormProps> = (props) => {
   const { login } = useAuth()
   const { content } = useContent()
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState(USER.username)
+  const [password, setPassword] = useState(USER.password)
   const [error, setError] = useState<string | null>(null)
 
   const componentsClass = 'o_LoginForm'

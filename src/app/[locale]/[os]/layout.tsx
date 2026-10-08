@@ -2,8 +2,8 @@ import { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { WindowsProvider } from '@/context/WindowContext'
 import ThemeProvider from '@/context/ThemeContext'
-import { OsId } from '@/enums/OsId'
-import { osConfigs } from '@/config/osThemes'
+import { isOsId, osConfigs } from '@/config/osThemes'
+import { i18nConfig } from '@/utils/i18n'
 
 type OsLayoutProps = {
   children: ReactNode
@@ -11,18 +11,20 @@ type OsLayoutProps = {
 }
 
 export function generateStaticParams() {
-  return Object.keys(osConfigs).map((os) => ({ os }))
+  return i18nConfig.locales.flatMap((locale) =>
+    Object.keys(osConfigs).map((os) => ({ locale, os })),
+  )
 }
 
 export default async function OsLayout({ children, params }: OsLayoutProps) {
   const { os } = await params
 
-  if (!Object.keys(osConfigs).includes(os)) {
+  if (!isOsId(os)) {
     notFound()
   }
 
   return (
-    <ThemeProvider osId={os as OsId}>
+    <ThemeProvider osId={os}>
       <WindowsProvider>{children}</WindowsProvider>
     </ThemeProvider>
   )

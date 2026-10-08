@@ -26,8 +26,17 @@ $color-grey-lightest: #e6e6e6;
 $color-grey-verylight: #dfdfdf;
 $color-grey-light: #c0c0c0;
 $color-grey-dark: #868a8e;
-
 $color-background: #008080;
+$win95-loading-gradient: linear-gradient(to right,
+      #4f7ebb,
+      #5c8bbb,
+      #6b92ba,
+      #799abd,
+      #8ba5be,
+      #9bafba,
+      #acb6c0,
+      #a7bbc3,
+      #4f7ebb);
 
 // SURFACES & ELEMENTS
 $window-face: $color-grey;
@@ -67,5 +76,15 @@ $biosCursorBlink: 1s step-start infinite;
 
    50% {
       opacity: 0;
+   }
+}
+
+@keyframes win95-loading {
+   0% {
+      background-position: 100% 0;
+   }
+
+   100% {
+      background-position: -100% 0;
    }
 }

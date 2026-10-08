@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { osConfigs } from '@/config/osThemes'
+import { isOsId, osConfigs } from '@/config/osThemes'
 import { OsId } from '@/enums/OsId'
 import Win95 from '@/components/templates/Win95'
 import Win98 from '@/components/templates/Win98'
@@ -24,10 +24,10 @@ export function generateStaticParams() {
 export default async function OsPage({ params }: OsPageProps) {
   const { os } = await params
 
-  if (!Object.keys(osConfigs).includes(os)) {
+  if (!isOsId(os)) {
     notFound()
   }
 
-  const Shell = shellMap[os as OsId]
+  const Shell = shellMap[os]
   return <Shell />
 }
