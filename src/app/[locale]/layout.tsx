@@ -15,7 +15,7 @@ type LocaleLayoutProps = {
 }
 
 const perfectDOS = localFont({
-  src: '../../../public/fonts/bios/PerfectDOS.ttf',
+  src: '../../../public/fonts/bios/perfectDOS.ttf',
   display: 'swap',
   variable: '--font-bios',
 })
