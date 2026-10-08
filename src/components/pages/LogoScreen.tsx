@@ -4,19 +4,16 @@ import { FC, useEffect } from 'react'
 import classNames from 'classnames'
 import { BootScreenProps } from '@/types/bootType'
 import Image from 'next/image'
-import useMediaQuery from '@/hooks/useMediaQuery'
 import { ResponsiveSize } from '@/enums/ResponsiveSize'
-
-import DesktopScreen from '../../../public/assets/themes/win95/images/win95-startup-desktop.jpg'
-import MobileScreen from '../../../public/assets/themes/win95/images/win95-startup-mobile.png'
-
+import { osConfigs } from '@/config/osThemes'
 
 const LogoScreen: FC<BootScreenProps> = (props) => {
-  const { additionalClass, duration, onComplete } = props
-
-  const isDesktop = useMediaQuery(ResponsiveSize.SCREEN_M_MIN)
+  const { additionalClass, osId, duration, onComplete } = props
+  const { desktop, mobile } = osConfigs[osId].startupScreenImages
 
   useEffect(() => {
+    if (duration === undefined) return
+
     const timer = setTimeout(onComplete, duration)
     return () => clearTimeout(timer)
   }, [duration, onComplete])
@@ -25,15 +22,23 @@ const LogoScreen: FC<BootScreenProps> = (props) => {
 
   return (
     <div className={classNames(componentsClass, additionalClass)}>
-      <div className={`${componentsClass}_image-wrapper`}>
+      <picture className={`${componentsClass}_image-wrapper`}>
+        {mobile && (
+          <source
+            media={ResponsiveSize.SCREEN_M_MAX}
+            srcSet={mobile}
+          />
+        )}
         <Image
-          src={isDesktop ? DesktopScreen : MobileScreen}
-          alt='Loading Screen'
+          src={desktop}
+          alt={`${osConfigs[osId].label} startup screen`}
           fill
-          priority
+          loading='eager'
+          fetchPriority='high'
+          sizes='100vw'
           className={`${componentsClass}_image`}
         />
-      </div>
+      </picture>
       <div className={`${componentsClass}_loading`} />
     </div>
   )

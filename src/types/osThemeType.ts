@@ -7,6 +7,10 @@ export type OsTheme = {
   biosDescription: string
   assetPath: string
   cursorPath: string
+  startupScreenImages: {
+    desktop: string
+    mobile?: string
+  }
   sounds: {
     startup?: string
     shutdown?: string
