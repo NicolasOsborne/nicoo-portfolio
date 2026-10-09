@@ -9,7 +9,11 @@ export type OsTheme = {
   cursorPath: string
   startupScreenImages: {
     desktop: string
-    mobile?: string
+    mobile: string
+  }
+  wallpaper?: {
+    desktop: string
+    mobile: string
   }
   sounds: {
     startup?: string
