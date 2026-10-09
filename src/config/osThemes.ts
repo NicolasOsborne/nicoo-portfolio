@@ -10,8 +10,8 @@ export const osConfigs: Record<OsId, OsTheme> = {
     assetPath: '/assets/themes/win95',
     cursorPath: '/assets/themes/win95/cursors',
     startupScreenImages: {
-      desktop: '/assets/themes/win95/images/win95-startup-desktop.jpg',
-      mobile: '/assets/themes/win95/images/win95-startup-mobile.png',
+      desktop: '/assets/themes/win95/images/Windows_95_Startup_Desktop.webp',
+      mobile: '/assets/themes/win95/images/Windows_95_Startup_Mobile.webp',
     },
     sounds: {
       startup: '/assets/themes/win95/sounds/startup.wav',
@@ -28,8 +28,8 @@ export const osConfigs: Record<OsId, OsTheme> = {
     assetPath: '/assets/themes/win98',
     cursorPath: '/assets/themes/win98/cursors',
     startupScreenImages: {
-      desktop: '/assets/themes/win98/images/win98-startup-desktop.png',
-      mobile: '/assets/themes/win98/images/win98-startup-mobile.jpg',
+      desktop: '/assets/themes/win98/images/Windows_98_Startup_Desktop.webp',
+      mobile: '/assets/themes/win98/images/Windows_98_Startup_Mobile.webp',
     },
     sounds: {
       startup: '/assets/themes/win98/sounds/startup.wav',
@@ -44,8 +44,12 @@ export const osConfigs: Record<OsId, OsTheme> = {
     assetPath: '/assets/themes/winXP',
     cursorPath: '/assets/themes/winXP/cursors',
     startupScreenImages: {
-      desktop: '/assets/themes/winXP/images/winXP_startup-desktop.png',
-      mobile: '/assets/themes/winXP/images/winXP_startup-mobile.jpg',
+      desktop: '/assets/themes/winXP/images/Windows_XP_Startup_Desktop.webp',
+      mobile: '/assets/themes/winXP/images/Windows_XP_Startup_Mobile.webp',
+    },
+    wallpaper: {
+      desktop: '/assets/themes/winXP/images/Windows_XP_Wallpaper_Desktop.webp',
+      mobile: '/assets/themes/winXP/images/Windows_XP_Wallpaper_Mobile.webp',
     },
     sounds: {
       startup: '/assets/themes/winXP/sounds/startup.wav',
@@ -61,8 +65,12 @@ export const osConfigs: Record<OsId, OsTheme> = {
     assetPath: '/assets/themes/linux',
     cursorPath: '/assets/themes/linux/cursors',
     startupScreenImages: {
-      desktop: '/assets/themes/linux/images/ubuntu_startup_desktop.webp',
-      mobile: '/assets/themes/linux/images/ubuntu_startup_mobile.jpg',
+      desktop: '/assets/themes/linux/images/Ubuntu_Startup_Desktop.webp',
+      mobile: '/assets/themes/linux/images/Ubuntu_Startup_Mobile.webp',
+    },
+    wallpaper: {
+      desktop: '/assets/themes/linux/images/Ubuntu_Wallpaper_Desktop.webp',
+      mobile: '/assets/themes/linux/images/Ubuntu_Wallpaper_Mobile.webp',
     },
     sounds: {
       error: '/assets/themes/linux/sounds/bell.wav',
