@@ -8,19 +8,19 @@ export const contentFr: Content = {
     list: [
       {
         id: 'win95',
-        label: "Microsoft Windows 95 (le premier ordinateur que j'ai utilise)",
+        label: "Windows 95 (le premier ordinateur que j'ai utilise)",
       },
       {
         id: 'win98',
-        label: "Microsoft Windows 98 (l'ordinateur de mon enfance)",
+        label: " Windows 98 (l'ordinateur de mon enfance)",
       },
       {
         id: 'winXP',
-        label: 'Microsoft Windows XP (mon premier ordinateur portable)',
+        label: 'Windows XP (mon premier ordinateur portable)',
       },
       {
         id: 'linux',
-        label: 'GNU/Linux (mon outil de travail au quotidien)',
+        label: 'Linux - Ubuntu (mon outil de travail au quotidien)',
       },
     ],
     navigation:
