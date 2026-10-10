@@ -16,8 +16,6 @@ export const osConfigs: Record<OsId, OsTheme> = {
     sounds: {
       startup: '/assets/themes/win95/sounds/startup.wav',
       shutdown: '/assets/themes/win95/sounds/shutdown.wav',
-      click: '/assets/themes/win95/sounds/click.wav',
-      error: '/assets/themes/win95/sounds/error.wav',
     },
   },
   win98: {
@@ -33,7 +31,7 @@ export const osConfigs: Record<OsId, OsTheme> = {
     },
     sounds: {
       startup: '/assets/themes/win98/sounds/startup.wav',
-      error: '/assets/themes/win98/sounds/error.wav',
+      error: '/assets/themes/win98/sounds/shutdown.wav',
     },
   },
   winXP: {
@@ -54,7 +52,6 @@ export const osConfigs: Record<OsId, OsTheme> = {
     sounds: {
       startup: '/assets/themes/winXP/sounds/startup.wav',
       shutdown: '/assets/themes/winXP/sounds/shutdown.wav',
-      error: '/assets/themes/winXP/sounds/error.wav',
     },
   },
   linux: {

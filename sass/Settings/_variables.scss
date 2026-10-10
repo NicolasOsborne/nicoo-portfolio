@@ -42,6 +42,17 @@ $win95-loading-gradient: linear-gradient(to right,
       #a7bbc3,
       #4f7ebb);
 
+// WinXP
+$winXP-loading-gradient: linear-gradient(180deg,
+      #09112d,
+      #8197cd 20%,
+      #8197cd 40%,
+      #5d62ab 60%,
+      #4158a6 70%,
+      #4158a6 80%,
+      #204399 90%,
+      #1c2954);
+
 // SURFACES & ELEMENTS
 $window-face: $color-grey;
 $button-face: $color-grey;
@@ -90,5 +101,25 @@ $biosCursorBlink: 1s step-start infinite;
 
    100% {
       background-position: -100% 0;
+   }
+}
+
+@keyframes winXP-loading {
+   0% {
+      left: -4.6vw;
+   }
+
+   100% {
+      left: 20vw;
+   }
+}
+
+@keyframes ubuntu-loading {
+   0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+   }
+
+   100% {
+      transform: translate(-50%, -50%) rotate(360deg);
    }
 }

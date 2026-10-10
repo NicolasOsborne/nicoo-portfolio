@@ -22,7 +22,7 @@ const LogoScreen: FC<BootScreenProps> = (props) => {
 
   return (
     <div className={classNames(componentsClass, additionalClass)}>
-      <picture className={`${componentsClass}_image-wrapper`}>
+      <picture>
         {mobile && (
           <source
             media={ResponsiveSize.SCREEN_M_MAX}
@@ -39,7 +39,13 @@ const LogoScreen: FC<BootScreenProps> = (props) => {
           className={`${componentsClass}_image`}
         />
       </picture>
-      <div className={`${componentsClass}_loading`} />
+      <div className={`${componentsClass}_loading`}>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
   )
 }

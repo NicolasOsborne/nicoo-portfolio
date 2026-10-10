@@ -12,18 +12,20 @@ export const bootSequences: Record<OsId, BootSequence> = {
   win98: [
     { step: 'specs', duration: 3500 },
     { step: 'systemconfig', duration: 2000 },
-    { step: 'logo', duration: 3000 },
+    { step: 'logo', duration: 4000 },
     { step: 'login' },
     { step: 'desktop' },
   ],
   winXP: [
-    { step: 'specs', duration: 1500 },
-    { step: 'logo', duration: 4000 },
+    { step: 'specs', duration: 2500 },
+    { step: 'logo', duration: 5000 },
     { step: 'login' },
     { step: 'desktop' },
   ],
   linux: [
+    { step: 'specs', duration: 2000 },
     { step: 'logo', duration: 4000 },
+    { step: 'login' },
     { step: 'desktop' },
   ],
 }
