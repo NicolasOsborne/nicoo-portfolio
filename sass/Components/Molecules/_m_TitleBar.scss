@@ -9,6 +9,8 @@
    @include os_themes.themed(background, chrome, titlebar-active);
    @include os_themes.themed(height, space, titlebar-height);
    @include os_themes.themed(padding, space, titlebar-padding);
+   @include os_themes.themed(border-top-left-radius, border, radius);
+   @include os_themes.themed(border-top-right-radius, border, radius);
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -38,7 +40,6 @@
 
       button {
          @include os_themes.themed(box-shadow, shadow, control-raised);
-
          @include os_themes.themed(width, space, control-size);
          @include os_themes.themed(height, space, control-size);
          padding: 0;
@@ -50,7 +51,9 @@
          line-height: 0;
          cursor: pointer;
 
-         &:active { @include os_themes.themed(box-shadow, shadow, pressed); }
+         &:active {
+            @include os_themes.themed(box-shadow, shadow, pressed);
+         }
       }
    }
 }

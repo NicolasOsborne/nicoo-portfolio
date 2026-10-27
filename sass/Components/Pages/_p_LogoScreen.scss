@@ -37,7 +37,7 @@
         left: 0;
         width: 100%;
         height: 12px;
-        background: $win95-loading-gradient;
+        background: $win95-loading-screen-gradient;
         background-size: 200% 100%;
         animation: win95-loading 2.5s infinite linear;
       }
@@ -70,7 +70,7 @@
             width: 1.2vw;
             height: 2.0vw;
             display: inline-block;
-            background: $winXP-loading-gradient;
+            background: $winXP-loading-screen-gradient;
             margin: 0 .1vw 0 0;
           }
         }
