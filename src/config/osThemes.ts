@@ -76,4 +76,4 @@ export const osConfigs: Record<OsId, OsTheme> = {
 }
 
 export const isOsId = (value: string): value is OsId =>
-  Object.prototype.hasOwnProperty.call(osConfigs, value)
+  Object.hasOwn(osConfigs, value)

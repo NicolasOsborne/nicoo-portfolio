@@ -2,10 +2,9 @@
 @use '../../Settings/os_themes';
 @use '../../Settings/responsive_variables';
 @use '../../Tools/typography';
-@use '../../Tools/mixins';
 
 .o_TaskBar {
-   @include mixins.border-window;
+   @include os_themes.themed(box-shadow, shadow, window);
 
    position: fixed;
    bottom: 0;
@@ -16,7 +15,7 @@
    align-items: center;
    padding: 2px;
    z-index: 998;
-   @include os_themes.themed(background-color, chrome, taskbar);
+   @include os_themes.themed(background, chrome, taskbar);
 
    &_start {
       @include typography.body;
@@ -42,7 +41,7 @@
 
    &_right {
       @include typography.body;
-      @include mixins.border-sunken;
+      @include os_themes.themed(box-shadow, shadow, sunken);
 
       padding-top: 2px;
       padding-right: 6px;

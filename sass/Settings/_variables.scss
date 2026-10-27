@@ -22,16 +22,18 @@ $color-bios-highlight: #aaaaaa;
 $color-bios-emphasis: $color-white;
 
 // Win95
-$color-blue: #000080;
-$color-highlight: #1084d0;
-$color-hover: #000e7a;
-$color-grey: #c3c7cb;
-$color-grey-lightest: #e6e6e6;
-$color-grey-verylight: #dfdfdf;
-$color-grey-light: #c0c0c0;
-$color-grey-dark: #868a8e;
-$color-background: #008080;
-$win95-loading-gradient: linear-gradient(to right,
+$win95-color-blue: #000080;
+$win95-color-blue-light: #0000ff;
+$win95-color-selected: $win95-color-blue;
+$win95-color-focus: $color-white;
+$win95-color-teal: #008080;
+$win95-color-grey: #c3c7cb;
+$win95-color-grey-lightest: #e6e6e6;
+$win95-color-grey-verylight: #dfdfdf;
+$win95-color-grey-light: #c0c0c0;
+$win95-color-grey-dark: #868a8e;
+
+$win95-loading-screen-gradient: linear-gradient(to right,
       #4f7ebb,
       #5c8bbb,
       #6b92ba,
@@ -42,8 +44,79 @@ $win95-loading-gradient: linear-gradient(to right,
       #a7bbc3,
       #4f7ebb);
 
+$win95-titlebar-active-gradient: linear-gradient(90deg,
+      $win95-color-blue,
+      $win95-color-blue);
+
+$win95-titlebar-inactive-gradient: linear-gradient(90deg,
+      $win95-color-grey-dark,
+      $win95-color-grey-dark);
+
+// Win98
+$win98-color-blue: #000080;
+$win98-color-blue-light: #1084d0;
+$win98-color-selected: #000a71;
+$win98-color-focus: #ff7f7f;
+$win98-color-teal: #008080;
+$win98-color-grey: #c3c7cb;
+$win98-color-grey-lightest: #e6e6e6;
+$win98-color-grey-verylight: #dfdfdf;
+$win98-color-grey-light: #c0c0c0;
+$win98-color-grey-dark: #808080;
+
+$win98-loading-screen-gradient: linear-gradient(to right,
+      #4f7ebb,
+      #5c8bbb,
+      #6b92ba,
+      #799abd,
+      #8ba5be,
+      #9bafba,
+      #acb6c0,
+      #a7bbc3,
+      #4f7ebb);
+
+$win98-titlebar-active-gradient: linear-gradient(90deg,
+      $win98-color-blue,
+      $win98-color-blue-light);
+
+$win98-titlebar-inactive-gradient: linear-gradient(90deg,
+      $win98-color-grey-dark,
+      $win98-color-grey-light);
+
 // WinXP
-$winXP-loading-gradient: linear-gradient(180deg,
+$winXP-color-selected: #316ac5;
+$winXP-color-grey-dark: #707070;
+$winXP-color-disabled: #cac8bb;
+$winXP-color-default-window: #ece9d8;
+$winXP-color-highlight-panel: #f7f7f7;
+$winXP-color-input-border: #7f9db9;
+$winXP-color-input-border-2: #1c5180;
+$winXP-color-link: #215dc6;
+$winXP-color-explorer-presenter: #6375d6;
+$winXP-color-green-light: #4bd24b;
+$winXP-color-green: #4ab030;
+$winXP-color-green-dark: #1c6733;
+$winXP-color-blue-light: #509af4;
+$winXP-color-blue: #245cda;
+$winXP-color-blue-dark: #214fa8;
+$winXP-color-cyan-light: #2ec6fd;
+$winXP-color-cyan: #11a5f0;
+$winXP-color-cyan-dark: #0c7dce;
+$winXP-color-lavender-light: #cbcbff;
+$winXP-color-lavender: #9999ff;
+$winXP-color-lavender-dark: #5b5bed;
+$winXP-color-orange-light: #ffda7d;
+$winXP-color-orange: #ffbd1a;
+$winXP-color-orange-dark: #e68b2c;
+$winXP-color-red-light: #e45f3e;
+$winXP-color-red: #ee3000;
+$winXP-color-red-dark: #4e1000;
+$winXP-color-creme-light: #f5f4ea;
+$winXP-color-creme: #ece9d8;
+$winXP-color-creme-dark: #c9c7ba;
+$winXP-color-creme-verydark: #aca899;
+
+$winXP-loading-screen-gradient: linear-gradient(180deg,
       #09112d,
       #8197cd 20%,
       #8197cd 40%,
@@ -53,16 +126,58 @@ $winXP-loading-gradient: linear-gradient(180deg,
       #204399 90%,
       #1c2954);
 
+$winXP-titlebar-active-gradient: linear-gradient(180deg,
+      #3D95FF 6.7%,
+      #0372FF 10.36%,
+      #0365F1 13.89%,
+      #0053E1 25.84%,
+      #0058EE 56.29%,
+      #026AFE 74.1%,
+      #026AFE 84.7%,
+      #0060FC 90.79%,
+      #0043CF 96.43%);
+
+$winXP-titlebar-inactive-gradient: linear-gradient(0deg,
+      rgba(242, 217, 217, 0.5),
+      rgba(242, 217, 217, 0.5)),
+   $winXP-titlebar-active-gradient;
+
+$winXP-titlebar-shadow: inset 8px 0px 5px -5px rgba(34, 37, 46, 0.54),
+   inset -8px 0px 5px -5px rgba(0, 15, 102, 0.66);
+
+$winXP-taskbar-gradient: linear-gradient(180deg,
+      #3168D5 2.8%,
+      #4993E6 6.99%,
+      #286ADD 14.1%,
+      #2359D6 19.93%,
+      #2157D7 36.28%,
+      #245DDB 57.21%,
+      #2662DF 75.35%,
+      #2663E0 90.7%,
+      #1E50C4 94.89%,
+      #3155B0 100%);
+
+$winXP-explorer-sidebar-gradient: linear-gradient(90deg,
+      #7ba2e7 0%,
+      #6B85dc 100%);
+
+$winXP-toolbar-gradient: linear-gradient(90deg,
+      #f3f4f7 0%, #e9e5cb 100%);
+
+// Ubuntu
+$ubuntu-color-background: #262626;
+$ubuntu-color-orange: #e95420;
+
 // SURFACES & ELEMENTS
-$window-face: $color-grey;
-$button-face: $color-grey;
+$window-face: $win95-color-grey;
+$button-face: $win95-color-grey;
 $button-highlight: $color-white;
-$button-shadow: $color-grey-dark;
+$button-shadow: $win95-color-grey-dark;
 $button-border: $color-black;
 
 // TEXT
 $text-color: $color-black;
-$text-disabled: $color-grey-dark;
+$text-disabled: $win95-color-grey-dark;
 
 // WRAPPER
 $wrapper: 1512px;

@@ -29,7 +29,7 @@
 
    &_focused {
       @include mixins.border-sunken;
-      background-color: $color-grey-lightest;
+      background-color: $win95-color-grey-lightest;
    }
 
    &_label {

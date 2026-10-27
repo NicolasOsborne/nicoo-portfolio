@@ -54,7 +54,7 @@
       #{$self}_label {
          text-shadow: none;
          padding: 1px 3px;
-         background-color: rgba($color-blue, 0.8);
+         background-color: rgba($win95-color-blue, 0.8);
          border: .5px dotted $color-white;
       }
 
@@ -63,7 +63,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-color: $color-blue;
+            background-color: $win95-color-blue;
             mix-blend-mode: screen;
             pointer-events: none;
          }

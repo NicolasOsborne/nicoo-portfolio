@@ -128,9 +128,9 @@
 
 // Section fieldset
 @mixin section-fieldset {
-   border-top: 2px groove $color-grey-lightest;
-   border-left: 2px groove $color-grey-lightest;
-   border-bottom: 1px solid $color-grey-dark;
-   border-right: 1px solid $color-grey-dark;
-   box-shadow: 1px 1px 0 0 $color-grey-lightest;
+   border-top: 2px groove $win95-color-grey-lightest;
+   border-left: 2px groove $win95-color-grey-lightest;
+   border-bottom: 1px solid $win95-color-grey-dark;
+   border-right: 1px solid $win95-color-grey-dark;
+   box-shadow: 1px 1px 0 0 $win95-color-grey-lightest;
 }

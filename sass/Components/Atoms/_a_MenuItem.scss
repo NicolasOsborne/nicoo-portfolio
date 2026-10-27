@@ -17,7 +17,7 @@
    &:hover,
    &:active,
    &:focus {
-      background-color: $color-hover;
+      background-color: $win95-color-selected;
 
       #{$self}_label {
          color: $color-white;
