@@ -29,7 +29,6 @@ const TaskBar: FC = () => {
     <div className={componentsClass}>
       <Button
         type='button'
-        disabled={false}
         className={`${componentsClass}_start`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >

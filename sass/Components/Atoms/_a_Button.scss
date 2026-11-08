@@ -1,36 +1,5 @@
-@use '../../Settings/variables' as *;
-@use '../../Settings/os_themes';
-@use '../../Tools/typography';
 @use '../../Tools/mixins';
 
 .a_Button {
-   @include mixins.border-raised;
-   @include typography.body;
-
-   cursor: pointer;
-   @include os_themes.themed(background-color, color, control);
-   @include os_themes.themed(color, color, text);
-   padding: 7px 20px 5px 20px;
-   border: none;
-   box-sizing: border-box;
-   text-align: center;
-   position: relative;
-
-   &:active {
-      @include mixins.border-pressed;
-   }
-
-   &:disabled {
-      @include mixins.border-raised;
-
-      cursor: default;
-      @include os_themes.themed(color, color, disabled);
-      @include os_themes.themed(background-color, color, control);
-      opacity: 0.8;
-   }
-
-   &:focus,
-   &:focus-visible {
-      @include mixins.focus;
-   }
+   @include mixins.button;
 }
