@@ -70,7 +70,6 @@ const LoginForm: FC<LoginFormProps> = (props) => {
                     className={`${componentsClass}_input`}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    autoFocus
                   />
                 </label>
                 <label className={`${componentsClass}_row`}>

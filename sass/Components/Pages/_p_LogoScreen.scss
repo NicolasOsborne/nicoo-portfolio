@@ -7,8 +7,9 @@
   $winXP: '.t_WinXP';
   $ubuntu: '.t_Linux';
 
-  width: 100dvw;
+  width: 100%;
   height: 100dvh;
+  min-height: 0;
   overflow: hidden;
   position: relative;
   background-color: $color-black;

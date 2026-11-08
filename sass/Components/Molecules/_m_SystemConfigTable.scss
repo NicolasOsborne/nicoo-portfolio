@@ -56,4 +56,31 @@
          font-size: 1rem;
       }
    }
+
+   @media screen and (max-height: 600px) {
+      padding: 0.25rem 0.4rem;
+
+      &_column {
+         flex-direction: row;
+         min-width: 0;
+         gap: 0.3rem;
+      }
+
+      &_section {
+         min-width: 0;
+         width: 50%;
+      }
+
+      &_row {
+         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+         gap: 0.15rem;
+         font-size: 0.6rem;
+
+         &-label,
+         &-value {
+            white-space: normal;
+            overflow-wrap: anywhere;
+         }
+      }
+   }
 }
