@@ -1,17 +1,19 @@
 @use '../../Settings/os_themes';
 
 .m_TitleBar {
-   @include os_themes.themed(font-family, type, font);
-   @include os_themes.themed(font-size, type, size);
-   @include os_themes.themed(font-weight, type, weight);
-   @include os_themes.themed(line-height, type, line-height);
+   @include os_themes.themed(font-family, type, titlebar-font);
+   @include os_themes.themed(font-size, type, titlebar-size);
+   @include os_themes.themed(font-weight, type, titlebar-weight);
+   @include os_themes.themed(line-height, type, titlebar-line-height);
    @include os_themes.themed(cursor, motion, cursor);
    @include os_themes.themed(background, chrome, titlebar-active);
    @include os_themes.themed(height, space, titlebar-height);
+   @include os_themes.themed(box-shadow, chrome, titlebar-shadow);
    @include os_themes.themed(padding, space, titlebar-padding);
    @include os_themes.themed(border-top-left-radius, border, radius);
    @include os_themes.themed(border-top-right-radius, border, radius);
    display: flex;
+   box-sizing: border-box;
    justify-content: space-between;
    align-items: center;
    @include os_themes.themed(color, color, titlebar-text);
@@ -23,37 +25,31 @@
 
    &_unfocus {
       @include os_themes.themed(background, chrome, titlebar-inactive);
+      @include os_themes.themed(box-shadow, chrome, titlebar-inactive-shadow);
    }
 
    &_title {
       @include os_themes.themed(color, color, titlebar-text);
-      font-weight: bold;
+      @include os_themes.themed(font-family, type, titlebar-font);
+      @include os_themes.themed(font-size, type, titlebar-size);
+      @include os_themes.themed(font-weight, type, titlebar-weight);
+      @include os_themes.themed(line-height, type, titlebar-line-height);
       @include os_themes.themed(text-shadow, shadow, title);
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 6px;
+      @include os_themes.themed(gap, space, titlebar-title-gap);
    }
 
-   &_controls {
+   .m_Controls {
       @include os_themes.themed(gap, space, control-gap);
+      display: flex;
+      align-items: center;
+   }
 
-      button {
-         @include os_themes.themed(box-shadow, shadow, control-raised);
-         @include os_themes.themed(width, space, control-size);
-         @include os_themes.themed(height, space, control-size);
-         padding: 0;
-         @include os_themes.themed(background-color, color, control);
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         font-weight: bold;
-         line-height: 0;
-         cursor: pointer;
-
-         &:active {
-            @include os_themes.themed(box-shadow, shadow, pressed);
-         }
-      }
+   &_icon {
+      @include os_themes.themed(width, space, titlebar-icon-size);
+      @include os_themes.themed(height, space, titlebar-icon-size);
+      flex: none;
    }
 }

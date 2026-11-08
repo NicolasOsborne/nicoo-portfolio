@@ -79,9 +79,10 @@ $win98-titlebar-active-gradient: linear-gradient(90deg,
       $win98-color-blue,
       $win98-color-blue-light);
 
+$win98-color-titlebar-inactive-to: #b5b5b5;
 $win98-titlebar-inactive-gradient: linear-gradient(90deg,
       $win98-color-grey-dark,
-      $win98-color-grey-light);
+      $win98-color-titlebar-inactive-to);
 
 // WinXP
 $winXP-color-selected: #316ac5;
@@ -167,6 +168,7 @@ $winXP-toolbar-gradient: linear-gradient(90deg,
 // Ubuntu
 $ubuntu-color-background: #262626;
 $ubuntu-color-orange: #e95420;
+$ubuntu-color-control-hover: #3a3a3a;
 
 // SURFACES & ELEMENTS
 $window-face: $win95-color-grey;
@@ -460,7 +462,7 @@ $win98-button-transition: none;
 
 // Windows XP tokens
 $winXP-type-size: 11px;
-$winXP-space-titlebar-height: 30px;
+$winXP-space-titlebar-height: 29px;
 $winXP-space-taskbar-height: 40px;
 $winXP-border-radius: 8px;
 $winXP-color-input: $color-white;
@@ -696,6 +698,155 @@ $linux-button-disabled-text-shadow: none;
 $linux-button-disabled-opacity: .8;
 $linux-button-hover-enabled: true;
 $linux-button-transition: none;
+
+// Window titlebar and control tokens
+$win95-titlebar-font: $font-win95;
+$win95-titlebar-size: 11px;
+$win95-titlebar-weight: 700;
+$win95-titlebar-line-height: 1;
+$win95-titlebar-padding: 1px 2px;
+$win95-titlebar-icon-size: 16px;
+$win95-titlebar-title-gap: 4px;
+$win95-titlebar-chrome-shadow: none;
+$win95-control-width: 16px;
+$win95-control-height: 14px;
+$win95-control-gap: 2px;
+$win95-control-radius: 0;
+$win95-control-background: $win95-button-background;
+$win95-control-border: $win95-button-border;
+$win95-control-shadow: $win95-button-shadow;
+$win95-control-pressed-background: $win95-control-background;
+$win95-control-pressed-border: $win95-button-pressed-border;
+$win95-control-pressed-shadow: $win95-button-pressed-shadow;
+$win95-control-hover-background: $win95-control-background;
+$win95-control-hover-border: $win95-control-border;
+$win95-control-hover-shadow: $win95-control-shadow;
+$win95-control-focus-background: $win95-button-background;
+$win95-control-focus-border: $win95-button-focus-border;
+$win95-control-focus-shadow: $win95-button-focus-shadow;
+$win95-control-focus-outline: $win95-button-focus-indicator;
+$win95-control-hover-enabled: false;
+$win95-control-inactive-opacity: 1;
+$win95-control-close-background: $win95-control-background;
+$win95-control-close-border: $win95-control-border;
+$win95-control-close-shadow: $win95-control-shadow;
+$win95-control-close-hover-background: $win95-control-hover-background;
+$win95-control-close-hover-border: $win95-control-hover-border;
+$win95-control-close-hover-shadow: $win95-control-hover-shadow;
+$win95-control-close-pressed-background: $win95-control-pressed-background;
+$win95-control-close-pressed-border: $win95-control-pressed-border;
+$win95-control-close-pressed-shadow: $win95-control-pressed-shadow;
+
+$win98-titlebar-font: $font-win98;
+$win98-titlebar-size: 11px;
+$win98-titlebar-weight: 700;
+$win98-titlebar-line-height: 1;
+$win98-titlebar-padding: 3px 2px 3px 3px;
+$win98-titlebar-icon-size: 14px;
+$win98-titlebar-title-gap: 4px;
+$win98-titlebar-chrome-shadow: none;
+$win98-control-width: 16px;
+$win98-control-height: 14px;
+$win98-control-gap: 2px;
+$win98-control-radius: 0;
+$win98-control-background: $win98-button-background;
+$win98-control-border: $win98-button-border;
+$win98-control-shadow: $win98-button-shadow;
+$win98-control-pressed-background: $win98-control-background;
+$win98-control-pressed-border: $win98-button-pressed-border;
+$win98-control-pressed-shadow: $win98-button-pressed-shadow;
+$win98-control-hover-background: $win98-control-background;
+$win98-control-hover-border: $win98-control-border;
+$win98-control-hover-shadow: $win98-control-shadow;
+$win98-control-focus-background: $win98-button-background;
+$win98-control-focus-border: $win98-button-focus-border;
+$win98-control-focus-shadow: $win98-button-focus-shadow;
+$win98-control-focus-outline: $win98-button-focus-indicator;
+$win98-control-hover-enabled: false;
+$win98-control-inactive-opacity: 1;
+$win98-control-close-background: $win98-control-background;
+$win98-control-close-border: $win98-control-border;
+$win98-control-close-shadow: $win98-control-shadow;
+$win98-control-close-hover-background: $win98-control-hover-background;
+$win98-control-close-hover-border: $win98-control-hover-border;
+$win98-control-close-hover-shadow: $win98-control-hover-shadow;
+$win98-control-close-pressed-background: $win98-control-pressed-background;
+$win98-control-close-pressed-border: $win98-control-pressed-border;
+$win98-control-close-pressed-shadow: $win98-control-pressed-shadow;
+
+$winXP-titlebar-font: 'Trebuchet MS', var(--font-winXP), 'Tahoma', sans-serif;
+$winXP-titlebar-size: 13px;
+$winXP-titlebar-weight: 700;
+$winXP-titlebar-line-height: 1;
+$winXP-titlebar-padding: 3px 8px;
+$winXP-titlebar-icon-size: 16px;
+$winXP-titlebar-title-gap: 5px;
+$winXP-titlebar-chrome-shadow: $winXP-titlebar-shadow;
+$winXP-control-width: 21px;
+$winXP-control-height: 21px;
+$winXP-control-gap: 4px;
+$winXP-control-radius: 2px;
+$winXP-control-background: linear-gradient(180deg, #245ff5 33%, #256bf8 66%);
+$winXP-control-border: 1px solid $color-white;
+$winXP-control-shadow: inset -2px -3px 5px #0844c3, inset 10px 2px 8px rgba($color-white, 0.33);
+$winXP-control-pressed-background: linear-gradient(135deg, #0051be 33%, #004db2 70.18%);
+$winXP-control-pressed-border: $winXP-control-border;
+$winXP-control-pressed-shadow: inset 2px 2px 3px rgba($color-black, 0.66), inset -2px -3px 5px #0844c3;
+$winXP-control-hover-background: linear-gradient(135deg, #3f7eff, #256bf8);
+$winXP-control-hover-border: $winXP-control-border;
+$winXP-control-hover-shadow: inset -2px -3px 4px #0844c3, inset 10px 2px 8px rgba($color-white, 0.33);
+$winXP-control-focus-background: $winXP-control-background;
+$winXP-control-focus-border: $winXP-control-border;
+$winXP-control-focus-shadow: $winXP-control-shadow;
+$winXP-control-focus-outline: 1px solid $color-white;
+$winXP-control-hover-enabled: true;
+$winXP-control-inactive-opacity: 0.6;
+$winXP-control-close-background: linear-gradient(180deg, #e46446 0%, #e65d32 100%);
+$winXP-control-close-border: $winXP-control-border;
+$winXP-control-close-shadow: inset -2px -3px 5px #aa2300, inset 10px 2px 8px -2px rgba($color-white, 0.1);
+$winXP-control-close-hover-background: linear-gradient(0deg, rgba($color-white, 0.2), rgba($color-white, 0.2)), linear-gradient(135deg, #f45555 0%, #f84c39 50%);
+$winXP-control-close-hover-border: $winXP-control-border;
+$winXP-control-close-hover-shadow: inset -2px -3px 4px #ff4514, inset 10px 2px 8px -2px rgba($color-white, 0.1);
+$winXP-control-close-pressed-background: #be3c1c;
+$winXP-control-close-pressed-border: $winXP-control-border;
+$winXP-control-close-pressed-shadow: inset -2px -3px 4px #c3411e, inset 2px 2px 3px rgba($color-black, 0.66);
+
+$linux-titlebar-font: $font-linux;
+$linux-titlebar-size: $linux-type-size;
+$linux-titlebar-weight: 600;
+$linux-titlebar-line-height: 1;
+$linux-titlebar-padding: 2px 4px;
+$linux-titlebar-icon-size: 16px;
+$linux-titlebar-title-gap: 4px;
+$linux-titlebar-chrome-shadow: none;
+$linux-control-width: 20px;
+$linux-control-height: 20px;
+$linux-control-gap: 3px;
+$linux-control-radius: 2px;
+$linux-control-background: $ubuntu-color-background;
+$linux-control-border: 1px solid $ubuntu-color-orange;
+$linux-control-shadow: inset 0 0 0 1px rgba($ubuntu-color-orange, 0.35);
+$linux-control-pressed-background: $ubuntu-color-orange;
+$linux-control-pressed-border: $linux-control-border;
+$linux-control-pressed-shadow: inset 1px 1px 2px $color-black;
+$linux-control-hover-background: $ubuntu-color-control-hover;
+$linux-control-hover-border: $linux-control-border;
+$linux-control-hover-shadow: inset 0 0 0 1px $ubuntu-color-orange;
+$linux-control-focus-background: $linux-control-background;
+$linux-control-focus-border: $linux-control-border;
+$linux-control-focus-shadow: $linux-control-shadow;
+$linux-control-focus-outline: 1px solid $ubuntu-color-orange;
+$linux-control-hover-enabled: true;
+$linux-control-inactive-opacity: 0.65;
+$linux-control-close-background: $linux-control-background;
+$linux-control-close-border: $linux-control-border;
+$linux-control-close-shadow: $linux-control-shadow;
+$linux-control-close-hover-background: $linux-control-hover-background;
+$linux-control-close-hover-border: $linux-control-hover-border;
+$linux-control-close-hover-shadow: $linux-control-hover-shadow;
+$linux-control-close-pressed-background: $linux-control-pressed-background;
+$linux-control-close-pressed-border: $linux-control-pressed-border;
+$linux-control-close-pressed-shadow: $linux-control-pressed-shadow;
 
 // WRAPPER
 $wrapper: 1512px;
