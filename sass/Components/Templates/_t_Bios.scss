@@ -8,8 +8,9 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   width: 100vw;
-   height: 100vh;
+   width: 100%;
+   height: 100dvh;
+   overflow: hidden;
    background-color: $color-bios-background;
    font-family: $font-bios;
    color: $color-bios-text;
@@ -25,13 +26,15 @@
       justify-content: center;
       gap: 2rem;
       width: 100%;
-      height: 90%;
+      height: 100%;
+      min-height: 0;
+      gap: clamp(0.5rem, 3dvh, 2rem);
    }
 
    &_header {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: clamp(0.5rem, 2dvh, 1rem);
    }
 
    &_inner {
@@ -40,22 +43,22 @@
       padding: 0 24px;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: clamp(0.75rem, 4dvh, 2rem);
    }
 
    &_title {
-      font-size: 2.5rem;
+      font-size: clamp(1.25rem, 6dvh, 2.5rem);
       text-align: center;
    }
 
    &_subtitle {
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 4dvh, 1.5rem);
       text-align: center;
    }
 
    &_menu {
       border: 1px solid $color-bios-highlight;
-      padding: 8px 8px 48px 8px;
+      padding: 8px 8px clamp(16px, 6dvh, 48px);
    }
 
    &_list {
@@ -151,6 +154,17 @@
       &_hint {
          text-align: left;
          margin-left: 1rem;
+      }
+   }
+
+   @media screen and (max-height: 600px) {
+      &_wrapper {
+         height: 100%;
+         gap: clamp(0.5rem, 2dvh, 1rem);
+      }
+
+      &_menu {
+         padding-bottom: clamp(16px, 5dvh, 32px);
       }
    }
 }
