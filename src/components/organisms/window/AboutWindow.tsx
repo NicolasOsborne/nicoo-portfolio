@@ -24,7 +24,6 @@ const AboutWindow: FC = () => {
       <div className={`${componentsClass}_footer`}>
         <Button
           type='button'
-          disabled={false}
           className={`${componentsClass}_download`}
         >
           {content.about.cvLabel}

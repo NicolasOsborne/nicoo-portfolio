@@ -1,7 +1,6 @@
 @use '../Settings/variables' as *;
 @use '../Settings/os_themes';
 @use '../Settings/responsive_variables';
-@use '../Tools/typography';
 
 // Padding
 @mixin paddingWrapper {
@@ -25,21 +24,92 @@
    max-width: $size;
 }
 
-// Windows 95
-
 // Focus
-@mixin focus {
+@mixin _focus-indicator($category, $token) {
    outline: none;
 
    &::after {
       content: '';
       position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
       pointer-events: none;
-      border: 1px dotted $color-black;
+      @include os_themes.themed(top, space, focus-inset);
+      @include os_themes.themed(right, space, focus-inset);
+      @include os_themes.themed(bottom, space, focus-inset);
+      @include os_themes.themed(left, space, focus-inset);
+      @include os_themes.themed(border, $category, $token);
+   }
+}
+
+@mixin focus {
+   @include _focus-indicator(border, focus-indicator);
+}
+
+// Button
+@mixin _button-state($state) {
+   @include os_themes.themed(padding, button, #{$state}-padding);
+   @include os_themes.themed(background, button, #{$state}-background);
+   @include os_themes.themed(color, button, #{$state}-color);
+   @include os_themes.themed(border, button, #{$state}-border);
+   @include os_themes.themed(box-shadow, button, #{$state}-shadow);
+}
+
+@mixin _button-default {
+   @include os_themes.themed(background, button, default-background);
+   @include os_themes.themed(color, button, default-color);
+   @include os_themes.themed(border, button, default-border);
+   @include os_themes.themed(box-shadow, button, default-shadow);
+}
+
+@mixin _button-hover {
+   @each $os, $theme in os_themes.$os-themes {
+      @if os_themes.os-token($os, button, hover-enabled) {
+         @at-root [data-os='#{$os}'] #{&}:hover:not(:disabled):not(:focus) {
+            background: os_themes.os-token($os, button, hover-background);
+            color: os_themes.os-token($os, button, hover-color);
+            border: os_themes.os-token($os, button, hover-border);
+            box-shadow: os_themes.os-token($os, button, hover-shadow);
+         }
+      }
+   }
+}
+
+@mixin button {
+   @include os_themes.themed(font-family, type, font);
+   @include os_themes.themed(font-size, button, font-size);
+   @include os_themes.themed(font-weight, button, font-weight);
+   @include os_themes.themed(line-height, button, line-height);
+   @include os_themes.themed(min-width, button, min-width);
+   @include os_themes.themed(min-height, button, min-height);
+   @include os_themes.themed(display, button, display);
+   @include os_themes.themed(padding, button, padding);
+   @include os_themes.themed(border-radius, button, border-radius);
+   @include os_themes.themed(transition, button, transition);
+   @include _button-default;
+
+   align-items: center;
+   justify-content: center;
+   box-sizing: border-box;
+   text-align: center;
+   position: relative;
+   cursor: pointer;
+
+   @include _button-hover;
+
+   &:focus {
+      @include _focus-indicator(button, focus-indicator);
+      @include _button-state(focus);
+   }
+
+   &:active:not(:disabled) {
+      @include _button-state(pressed);
+   }
+
+   &:disabled {
+      @include _button-state(disabled);
+      @include os_themes.themed(text-shadow, button, disabled-text-shadow);
+      @include os_themes.themed(opacity, button, disabled-opacity);
+
+      cursor: default;
    }
 }
 
@@ -65,72 +135,50 @@
 
 // Flat borders
 @mixin border-flat {
-   padding: 6px;
-   box-shadow:
-      inset 0px 0px 0px 0px,
-      inset 1px 1px 0px 0px $button-shadow,
-      .5px .5px 0px .5px $button-highlight;
+   @include os_themes.themed(padding, space, flat-padding);
+   @include os_themes.themed(box-shadow, border, flat);
 }
 
 // Tabs
 // Tab border
 @mixin tab {
    cursor: pointer;
-   background-color: $button-face;
-   box-shadow:
-      inset 0 1px 0 0 $button-highlight,
-      2px 1px 0 -1px $button-shadow,
-      2px 0 0 -1px $button-border,
-      3px 1px 0 -1px $button-border;
+   @include os_themes.themed(background-color, color, control);
+   @include os_themes.themed(box-shadow, border, tab);
 }
 
 // Active tab
 @mixin tab-active {
-   box-shadow:
-      inset 0 1px 0 0 $button-highlight,
-      -2px 1px 0 -1px $button-face,
-      -0.5px 3px 0 0.5px $button-face,
-      -2px 2px 0 0 $button-highlight,
-      -2px 0 0 -1px $button-highlight,
-      1px 2px 0 0 $button-shadow,
-      2px 0 0 -1px $button-border,
-      2px 2px 0 0 $button-border;
+   @include os_themes.themed(box-shadow, border, tab-active);
 }
 
 // Tab window content
 @mixin tab-content {
-   padding: 12px;
-   background-color: $window-face;
-   border-top: 1px solid $button-highlight;
-   box-shadow:
-      inset .5px .5px 0px .5px $button-highlight,
-      inset 0 0 0 1px $button-shadow,
-      1px 0px 0 0px $button-border,
-      0px 1px 0 0px $button-border,
-      1px 1px 0 0px $button-border;
+   @include os_themes.themed(padding, space, tab-content-padding);
+   @include os_themes.themed(background-color, color, surface);
+   @include os_themes.themed(border-top, border, tab-content-top);
+   @include os_themes.themed(box-shadow, border, tab-content);
 }
 
 // Input
 @mixin border-input {
    outline: none;
    border: none;
-   padding: 3px 3px 5px 3px;
-   color: $text-color;
-   background-color: $color-white;
-   border-top: 1px solid $button-shadow;
-   border-right-width: 0;
-   border-bottom-width: 0;
-   border-left: 1px solid $button-shadow;
-   box-shadow:
-      inset -1px -1px 0 0 $button-face,
-      inset 1px 1px 0 0 $button-border, .5px .5px 0 .5px $button-highlight;
+   @include os_themes.themed(padding, space, input-padding);
+   @include os_themes.themed(color, color, text);
+   @include os_themes.themed(background-color, color, input);
+   @include os_themes.themed(border-top, border, input-edge);
+   border-right: none;
+   border-bottom: none;
+   @include os_themes.themed(border-left, border, input-edge);
+   @include os_themes.themed(box-shadow, border, input-shadow);
 }
 
 // Section fieldset
 @mixin section-fieldset {
-   border-top: 2px groove $win95-color-grey-lightest;
-   border-left: 2px groove $win95-color-grey-lightest;
-   border-bottom: 1px solid $win95-color-grey-dark;
-   border-right: 1px solid $win95-color-grey-dark;
-   box-shadow: 1px 1px 0 0 $win95-color-grey-lightest;
+   @include os_themes.themed(border-top, border, fieldset-top);
+   @include os_themes.themed(border-left, border, fieldset-left);
+   @include os_themes.themed(border-bottom, border, fieldset-bottom);
+   @include os_themes.themed(border-right, border, fieldset-right);
+   @include os_themes.themed(box-shadow, border, fieldset-shadow);
 }

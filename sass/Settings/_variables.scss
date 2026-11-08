@@ -2,8 +2,8 @@
 $font-bios: var(--font-bios), 'PerfectDOS', monospace;
 $font-win95: var(--font-win95), 'Win95', sans-serif;
 $font-win98: var(--font-win98), 'MS Sans Serif', sans-serif;
-$font-winXP: var(--font-winXP), Tahoma, sans-serif;
-$font-linux: var(--font-linux), Ubuntu, sans-serif;
+$font-winXP: var(--font-winXP), 'Tahoma', sans-serif;
+$font-linux: var(--font-linux), 'Ubuntu', sans-serif;
 $font-linux-mono: var(--font-linux-mono), 'Ubuntu Mono', monospace;
 
 // Fallbacks
@@ -178,6 +178,524 @@ $button-border: $color-black;
 // TEXT
 $text-color: $color-black;
 $text-disabled: $win95-color-grey-dark;
+
+// Multi-OS theme tokens
+$theme-font-weight-regular: 400;
+$theme-line-height-default: 1;
+$theme-title-size: 16px;
+$theme-titlebar-padding: 2px 4px;
+$theme-control-gap: 3px;
+$theme-control-size: 16px;
+$theme-window-padding: 2px;
+$theme-content-padding: 8px;
+$theme-section-gap: 6px;
+$theme-border-width: 1px;
+$theme-motion-duration: 300ms;
+$theme-transition: all $theme-motion-duration;
+$theme-cursor: grab;
+$theme-layer-window: 20;
+$theme-layer-desktop: 1;
+$theme-layer-taskbar: 998;
+$theme-layer-overlay: 1000;
+$theme-color-focus: $color-black;
+$theme-color-transparent: rgba($color-black, 0);
+$theme-radius-square: 0;
+$theme-radius-control: 0;
+$theme-space-flat-padding: 6px;
+$theme-space-tab-content-padding: 12px;
+$theme-space-input-padding: 3px 3px 5px 3px;
+$theme-space-focus-inset: 4px;
+
+// Shared, tokenized bevel ingredients
+$bevel-black: $color-black;
+$bevel-white: $color-white;
+$bevel-grey-light: $win95-color-grey-light;
+$bevel-grey-verylight: $win95-color-grey-verylight;
+$bevel-grey-dark: $win95-color-grey-dark;
+$bevel-grey-medium: #808080;
+$bevel-grey-98-pressed: #d4d0c8;
+$bevel-grey-95-pressed: #c4c4c4;
+$bevel-xp-blue-dark: #003c74;
+$bevel-xp-grey: #a0a0a0;
+$bevel-linux-dark: #003300;
+$bevel-linux-green: #00ff41;
+$bevel-linux-grey: #333333;
+
+// Windows 95 tokens
+$win95-type-size: 11px;
+$win95-space-titlebar-height: 18px;
+$win95-space-taskbar-height: 28px;
+$win95-border-radius: $theme-radius-square;
+$win95-color-input: $color-white;
+$win95-color-disabled: $win95-color-grey-dark;
+$win95-color-button-focus: $color-black;
+$win95-border-raised: (
+   inset 1px 1px 0 1px $bevel-white,
+   inset 0 0 0 1px $bevel-grey-dark,
+   1px 1px 0 0 $bevel-black
+);
+$win95-border-pressed: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-grey-dark,
+   inset -1px -1px 0 0 $win95-color-grey
+);
+$win95-border-sunken: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-grey-dark,
+   .5px .5px 0 .5px $bevel-white
+);
+$win95-border-window: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $bevel-grey-dark,
+   1px 0 0 0 $bevel-black,
+   1px 1px 0 0 $bevel-black
+);
+$win95-shadow-control-raised: (
+   inset 1px 1px 0 0 $bevel-white,
+   inset 0 0 0 1px $bevel-grey-dark,
+   1px 1px 0 0 $bevel-black
+);
+$win95-shadow-focus: 0 0 0 $theme-border-width $win95-color-button-focus;
+$win95-shadow-title: 1px 1px 0 $bevel-black;
+$win95-border-flat: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-grey-dark,
+   .5px .5px 0 .5px $bevel-white
+);
+$win95-border-tab: (
+   inset 0 1px 0 0 $bevel-white,
+   2px 1px 0 -1px $bevel-grey-dark,
+   2px 0 0 -1px $bevel-black,
+   3px 1px 0 -1px $bevel-black
+);
+$win95-border-tab-active: (
+   inset 0 1px 0 0 $bevel-white,
+   -2px 1px 0 -1px $win95-color-grey,
+   -.5px 3px 0 .5px $win95-color-grey,
+   -2px 2px 0 0 $bevel-white,
+   -2px 0 0 -1px $bevel-white,
+   1px 2px 0 0 $bevel-grey-dark,
+   2px 0 0 -1px $bevel-black,
+   2px 2px 0 0 $bevel-black
+);
+$win95-border-tab-content: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $bevel-grey-dark,
+   1px 0 0 0 $bevel-black,
+   0 1px 0 0 $bevel-black,
+   1px 1px 0 0 $bevel-black
+);
+$win95-border-tab-content-top: $theme-border-width solid $bevel-white;
+$win95-border-input-edge: $theme-border-width solid $bevel-grey-dark;
+$win95-border-input-shadow: (
+   inset -1px -1px 0 0 $win95-color-grey,
+   inset 1px 1px 0 0 $bevel-black,
+   .5px .5px 0 .5px $bevel-white
+);
+$win95-border-fieldset-top: 2px groove $win95-color-grey-lightest;
+$win95-border-fieldset-left: 2px groove $win95-color-grey-lightest;
+$win95-border-fieldset-bottom: $theme-border-width solid $bevel-grey-dark;
+$win95-border-fieldset-right: $theme-border-width solid $bevel-grey-dark;
+$win95-border-fieldset-shadow: 1px 1px 0 0 $win95-color-grey-lightest;
+$win95-border-focus-indicator: 1px dotted $win95-color-button-focus;
+$win95-button-focus-indicator: $win95-border-focus-indicator;
+$win95-button-min-width: 80px;
+$win95-button-min-height: 22px;
+$win95-button-display: inline-flex;
+$win95-button-padding: 6px 8px;
+$win95-button-focus-padding: 6px 8px;
+$win95-button-pressed-padding: 6px 8px;
+$win95-button-disabled-padding: 6px 8px;
+$win95-button-hover-padding: 6px 8px;
+$win95-button-line-height: 10px;
+$win95-button-radius: $theme-radius-square;
+$win95-button-background: $win95-color-grey-light;
+$win95-button-text: $color-black;
+$win95-button-border: none;
+$win95-button-focus-border: none;
+$win95-button-pressed-border: $theme-border-width solid $bevel-black;
+$win95-button-shadow: (
+   inset -1px -1px 0 0 $bevel-black,
+   inset 1px 1px 0 0 $bevel-white,
+   inset -2px -2px 0 0 $bevel-grey-medium,
+   inset 2px 2px 0 0 $win95-color-grey-verylight
+);
+$win95-button-focus-shadow: (
+   inset -1px -1px 0 0 $bevel-black,
+   inset 1px 1px 0 0 $bevel-black,
+   inset -2px -2px 0 0 $bevel-black,
+   inset 2px 2px 0 0 $bevel-white,
+   inset -3px -3px 0 0 $bevel-grey-medium,
+   inset 3px 3px 0 0 $win95-color-grey-verylight
+);
+$win95-button-pressed-shadow: (
+   inset -1px -1px 0 0 $bevel-white,
+   inset 1px 1px 0 0 $bevel-black,
+   inset -2px -2px 0 0 $bevel-grey-95-pressed,
+   inset 2px 2px 0 0 $bevel-grey-medium
+);
+$win95-button-disabled-background: $win95-button-background;
+$win95-button-disabled-text: $win95-color-grey-dark;
+$win95-button-disabled-border: none;
+$win95-button-disabled-shadow: $win95-button-shadow;
+$win95-button-disabled-text-shadow: 1px 1px 0 $bevel-white;
+$win95-button-disabled-opacity: 1;
+$win95-button-hover-enabled: false;
+$win95-button-transition: none;
+
+// Windows 98 tokens
+$win98-type-size: 11px;
+$win98-space-titlebar-height: 20px;
+$win98-space-taskbar-height: 28px;
+$win98-border-radius: $theme-radius-square;
+$win98-color-input: $color-white;
+$win98-color-disabled: $win98-color-grey-dark;
+$win98-color-button-focus: $color-black;
+$win98-border-raised: (
+   inset 1px 1px 0 1px $bevel-white,
+   inset 0 0 0 1px $win98-color-grey-dark,
+   1px 1px 0 0 $bevel-black
+);
+$win98-border-pressed: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $win98-color-grey-dark,
+   inset -1px -1px 0 0 $bevel-grey-98-pressed
+);
+$win98-border-sunken: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $win98-color-grey-dark,
+   .5px .5px 0 .5px $bevel-white
+);
+$win98-border-window: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $win98-color-grey-dark,
+   1px 0 0 0 $bevel-black,
+   1px 1px 0 0 $bevel-black
+);
+$win98-shadow-control-raised: (
+   inset 1px 1px 0 0 $bevel-white,
+   inset 0 0 0 1px $win98-color-grey-dark,
+   1px 1px 0 0 $bevel-black
+);
+$win98-shadow-focus: 0 0 0 $theme-border-width $win98-color-button-focus;
+$win98-shadow-title: 1px 1px 0 $bevel-black;
+$win98-border-flat: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $win98-color-grey-dark,
+   .5px .5px 0 .5px $bevel-white
+);
+$win98-border-tab: (
+   inset 0 1px 0 0 $bevel-white,
+   2px 1px 0 -1px $win98-color-grey-dark,
+   2px 0 0 -1px $bevel-black,
+   3px 1px 0 -1px $bevel-black
+);
+$win98-border-tab-active: (
+   inset 0 1px 0 0 $bevel-white,
+   -2px 1px 0 -1px $win98-color-grey,
+   -.5px 3px 0 .5px $win98-color-grey,
+   -2px 2px 0 0 $bevel-white,
+   -2px 0 0 -1px $bevel-white,
+   1px 2px 0 0 $win98-color-grey-dark,
+   2px 0 0 -1px $bevel-black,
+   2px 2px 0 0 $bevel-black
+);
+$win98-border-tab-content: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $win98-color-grey-dark,
+   1px 0 0 0 $bevel-black,
+   0 1px 0 0 $bevel-black,
+   1px 1px 0 0 $bevel-black
+);
+$win98-border-tab-content-top: $theme-border-width solid $bevel-white;
+$win98-border-input-edge: $theme-border-width solid $win98-color-grey-dark;
+$win98-border-input-shadow: (
+   inset -1px -1px 0 0 $win98-color-grey,
+   inset 1px 1px 0 0 $bevel-black,
+   .5px .5px 0 .5px $bevel-white
+);
+$win98-border-fieldset-top: 2px groove $win98-color-grey-lightest;
+$win98-border-fieldset-left: 2px groove $win98-color-grey-lightest;
+$win98-border-fieldset-bottom: $theme-border-width solid $win98-color-grey-dark;
+$win98-border-fieldset-right: $theme-border-width solid $win98-color-grey-dark;
+$win98-border-fieldset-shadow: 1px 1px 0 0 $win98-color-grey-lightest;
+$win98-border-focus-indicator: 1px dashed $win98-color-button-focus;
+$win98-button-focus-indicator: $win98-border-focus-indicator;
+$win98-button-min-width: 75px;
+$win98-button-min-height: 23px;
+$win98-button-display: inline-flex;
+$win98-button-padding: 5.5px 18px;
+$win98-button-focus-padding: 3px 3px 4px;
+$win98-button-pressed-padding: 5.5px 11px 5.5px 12px;
+$win98-button-disabled-padding: 5.5px 14px;
+$win98-button-hover-padding: 5.5px 18px;
+$win98-button-line-height: 12px;
+$win98-button-radius: $theme-radius-square;
+$win98-button-background: $win98-color-grey-light;
+$win98-button-text: $color-black;
+$win98-button-border: none;
+$win98-button-focus-border: none;
+$win98-button-pressed-border: none;
+$win98-button-shadow: (
+   inset -1px -1px 0 0 #0a0a0a,
+   inset 1px 1px 0 0 $bevel-white,
+   inset -2px -2px 0 0 $win98-color-grey-dark,
+   inset 2px 2px 0 0 $win98-color-grey-verylight
+);
+$win98-button-focus-shadow: $win98-button-shadow;
+$win98-button-pressed-shadow: (
+   inset -1px -1px 0 0 $bevel-white,
+   inset 1px 1px 0 0 #0a0a0a,
+   inset -2px -2px 0 0 $win98-color-grey-verylight,
+   inset 2px 2px 0 0 $win98-color-grey-dark
+);
+$win98-button-disabled-background: $win98-button-background;
+$win98-button-disabled-text: $win98-color-grey-dark;
+$win98-button-disabled-border: none;
+$win98-button-disabled-shadow: $win98-button-shadow;
+$win98-button-disabled-text-shadow: 1px 1px 0 $bevel-white;
+$win98-button-disabled-opacity: 1;
+$win98-button-hover-enabled: false;
+$win98-button-transition: none;
+
+// Windows XP tokens
+$winXP-type-size: 11px;
+$winXP-space-titlebar-height: 30px;
+$winXP-space-taskbar-height: 40px;
+$winXP-border-radius: 8px;
+$winXP-color-input: $color-white;
+$winXP-color-button-bottom: #f0f0ea;
+$winXP-color-button-pressed-top: #e5e4dd;
+$winXP-color-button-pressed-bottom: #e0e0d7;
+$winXP-color-button-focus-ring: #93b3e7;
+$winXP-color-button-hover-ring: #fbca6a;
+$winXP-color-button-shadow-warm: #533700;
+$winXP-color-button-disabled-overlay: rgba($color-black, 0.2);
+$winXP-color-button-disabled-text: $color-black;
+$winXP-border-raised: (
+   inset 1px 1px 0 1px $bevel-white,
+   inset 0 0 0 1px $bevel-xp-grey,
+   1px 1px 0 0 $bevel-xp-blue-dark
+);
+$winXP-border-pressed: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-xp-grey,
+   inset -1px -1px 0 0 $winXP-color-default-window
+);
+$winXP-border-sunken: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-xp-grey,
+   .5px .5px 0 .5px $bevel-white
+);
+$winXP-border-window: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $bevel-xp-grey,
+   1px 0 0 0 $bevel-xp-blue-dark,
+   1px 1px 0 0 $bevel-xp-blue-dark
+);
+$winXP-shadow-control-raised: (
+   inset 1px 1px 0 0 $bevel-white,
+   inset 0 0 0 1px $bevel-xp-grey,
+   1px 1px 0 0 $bevel-xp-blue-dark
+);
+$winXP-shadow-focus: 0 0 0 $theme-border-width $winXP-color-input-border;
+$winXP-shadow-title: 1px 1px 0 $bevel-black;
+$winXP-border-flat: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-xp-grey,
+   .5px .5px 0 .5px $bevel-white
+);
+$winXP-border-tab: (
+   inset 0 1px 0 0 $bevel-white,
+   2px 1px 0 -1px $bevel-xp-grey,
+   2px 0 0 -1px $bevel-xp-blue-dark,
+   3px 1px 0 -1px $bevel-xp-blue-dark
+);
+$winXP-border-tab-active: (
+   inset 0 1px 0 0 $bevel-white,
+   -2px 1px 0 -1px $winXP-color-default-window,
+   -.5px 3px 0 .5px $winXP-color-default-window,
+   -2px 2px 0 0 $bevel-white,
+   -2px 0 0 -1px $bevel-white,
+   1px 2px 0 0 $bevel-xp-grey,
+   2px 0 0 -1px $bevel-xp-blue-dark,
+   2px 2px 0 0 $bevel-xp-blue-dark
+);
+$winXP-border-tab-content: (
+   inset .5px .5px 0 .5px $bevel-white,
+   inset 0 0 0 1px $bevel-xp-grey,
+   1px 0 0 0 $bevel-xp-blue-dark,
+   0 1px 0 0 $bevel-xp-blue-dark,
+   1px 1px 0 0 $bevel-xp-blue-dark
+);
+$winXP-border-tab-content-top: $theme-border-width solid $bevel-white;
+$winXP-border-input-edge: $theme-border-width solid $winXP-color-input-border;
+$winXP-border-input-shadow: (
+   inset -1px -1px 0 0 $winXP-color-default-window,
+   inset 1px 1px 0 0 $bevel-xp-blue-dark,
+   .5px .5px 0 .5px $bevel-white
+);
+$winXP-border-fieldset-top: 2px groove $winXP-color-highlight-panel;
+$winXP-border-fieldset-left: 2px groove $winXP-color-highlight-panel;
+$winXP-border-fieldset-bottom: $theme-border-width solid $winXP-color-grey-dark;
+$winXP-border-fieldset-right: $theme-border-width solid $winXP-color-grey-dark;
+$winXP-border-fieldset-shadow: 1px 1px 0 0 $winXP-color-highlight-panel;
+$winXP-border-focus-indicator: 1px solid $winXP-color-blue;
+$winXP-button-focus-indicator: none;
+$winXP-button-min-width: 75px;
+$winXP-button-min-height: 23px;
+$winXP-button-display: inline-flex;
+$winXP-button-padding: 3px 12px;
+$winXP-button-focus-padding: 4px 12px;
+$winXP-button-pressed-padding: 4px 12px;
+$winXP-button-disabled-padding: 4px 12px;
+$winXP-button-hover-padding: 4px 12px;
+$winXP-button-line-height: 13px;
+$winXP-button-radius: 2.5px;
+$winXP-button-background: linear-gradient(180deg, $color-white 0%, $winXP-color-button-bottom 100%);
+$winXP-button-text: $color-black;
+$winXP-button-border: $theme-border-width solid $winXP-color-input-border-2;
+$winXP-button-focus-border: $winXP-button-border;
+$winXP-button-pressed-border: $winXP-button-border;
+$winXP-button-shadow: (
+   1px 1px 0 rgba($color-white, .75),
+   -1px -1px 0 rgba($color-black, .05),
+   inset 1.5px 1.5px 2px $color-white,
+   inset -1.5px -2.5px 2px rgba($winXP-color-button-shadow-warm, .2)
+);
+$winXP-button-focus-shadow: (
+   1px 1px 0 rgba($color-white, .75),
+   -1px -1px 0 rgba($color-black, .05),
+   inset 0 3.5px 2px -2px rgba($color-white, .25),
+   inset 0 0 0 3px $winXP-color-button-focus-ring
+);
+$winXP-button-hover-shadow: (
+   1px 1px 0 rgba($color-white, .75),
+   -1px -1px 0 rgba($color-black, .05),
+   inset 0 1.5px 2px .5px rgba($color-white, .75),
+   inset 0 -3.5px 2px -2px rgba($color-black, .25),
+   inset 0 0 0 3px $winXP-color-button-hover-ring
+);
+$winXP-button-pressed-shadow: (
+   1px 1px 0 rgba($color-white, .75),
+   -1px -1px 0 rgba($color-black, .05),
+   inset -1.5px -1.5px 2px $color-white,
+   inset 1.5px 2.5px 2px rgba($winXP-color-button-shadow-warm, .2)
+);
+$winXP-button-pressed-background: linear-gradient(180deg, $winXP-color-button-pressed-top 0%, $winXP-color-button-pressed-bottom 100%);
+$winXP-button-disabled-background: $winXP-color-creme-light;
+$winXP-button-disabled-text: $winXP-color-button-disabled-text;
+$winXP-button-disabled-border: $theme-border-width solid $winXP-color-button-disabled-overlay;
+$winXP-button-disabled-shadow: none;
+$winXP-button-disabled-text-shadow: none;
+$winXP-button-disabled-opacity: .33;
+$winXP-button-hover-enabled: true;
+$winXP-button-transition: box-shadow 120ms ease, background 120ms ease;
+
+// Linux tokens.
+$linux-type-size: 13px;
+$linux-space-titlebar-height: 24px;
+$linux-space-taskbar-height: 32px;
+$linux-border-radius: $theme-radius-square;
+$linux-color-disabled: #4a4a4a;
+$linux-color-focus: $color-black;
+$linux-color-input: $color-white;
+$linux-border-raised: (
+   inset 1px 1px 0 1px $bevel-linux-green,
+   inset 0 0 0 1px $bevel-linux-dark,
+   1px 1px 0 0 $bevel-linux-green
+);
+$linux-border-pressed: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-linux-dark,
+   inset -1px -1px 0 0 $bevel-linux-grey
+);
+$linux-border-sunken: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-linux-dark,
+   .5px .5px 0 .5px $bevel-linux-green
+);
+$linux-border-window: (
+   inset .5px .5px 0 .5px $bevel-linux-green,
+   inset 0 0 0 1px $bevel-linux-dark,
+   1px 0 0 0 $bevel-linux-green,
+   1px 1px 0 0 $bevel-linux-green
+);
+$linux-shadow-control-raised: (
+   inset 1px 1px 0 0 $bevel-linux-green,
+   inset 0 0 0 1px $bevel-linux-dark,
+   1px 1px 0 0 $bevel-linux-green
+);
+$linux-shadow-focus: 0 0 0 $theme-border-width $linux-color-focus;
+$linux-shadow-title: 1px 1px 0 $bevel-black;
+$linux-border-flat: (
+   inset 0 0 0 0 $theme-color-transparent,
+   inset 1px 1px 0 0 $bevel-linux-dark,
+   .5px .5px 0 .5px $bevel-linux-green
+);
+$linux-border-tab: (
+   inset 0 1px 0 0 $bevel-linux-green,
+   2px 1px 0 -1px $bevel-linux-dark,
+   2px 0 0 -1px $bevel-black,
+   3px 1px 0 -1px $bevel-black
+);
+$linux-border-tab-active: (
+   inset 0 1px 0 0 $bevel-linux-green,
+   -2px 1px 0 -1px $ubuntu-color-background,
+   -.5px 3px 0 .5px $ubuntu-color-background,
+   -2px 2px 0 0 $bevel-linux-green,
+   -2px 0 0 -1px $bevel-linux-green,
+   1px 2px 0 0 $bevel-linux-dark,
+   2px 0 0 -1px $bevel-black,
+   2px 2px 0 0 $bevel-black
+);
+$linux-border-tab-content: (
+   inset .5px .5px 0 .5px $bevel-linux-green,
+   inset 0 0 0 1px $bevel-linux-dark,
+   1px 0 0 0 $bevel-linux-green,
+   0 1px 0 0 $bevel-linux-green,
+   1px 1px 0 0 $bevel-linux-green
+);
+$linux-border-tab-content-top: $theme-border-width solid $bevel-linux-green;
+$linux-border-input-edge: $theme-border-width solid $bevel-linux-dark;
+$linux-border-input-shadow: (
+   inset -1px -1px 0 0 $ubuntu-color-background,
+   inset 1px 1px 0 0 $bevel-black,
+   .5px .5px 0 .5px $bevel-linux-green
+);
+$linux-border-fieldset-top: 2px groove $bevel-linux-green;
+$linux-border-fieldset-left: 2px groove $bevel-linux-green;
+$linux-border-fieldset-bottom: $theme-border-width solid $bevel-linux-dark;
+$linux-border-fieldset-right: $theme-border-width solid $bevel-linux-dark;
+$linux-border-fieldset-shadow: 1px 1px 0 0 $bevel-linux-green;
+$linux-border-focus-indicator: 1px dotted $linux-color-focus;
+$linux-button-focus-indicator: $linux-border-focus-indicator;
+$linux-button-min-width: 75px;
+$linux-button-min-height: auto;
+$linux-button-display: inline-block;
+$linux-button-padding: 7px 20px 5px;
+$linux-button-focus-padding: 7px 20px 5px;
+$linux-button-pressed-padding: 7px 20px 5px;
+$linux-button-disabled-padding: 7px 20px 5px;
+$linux-button-hover-padding: 7px 20px 5px;
+$linux-button-line-height: $theme-line-height-default;
+$linux-button-radius: revert;
+$linux-button-background: $color-white;
+$linux-button-text: $color-white;
+$linux-button-border: none;
+$linux-button-focus-border: none;
+$linux-button-pressed-border: none;
+$linux-button-shadow: $linux-shadow-control-raised;
+$linux-button-focus-shadow: $linux-shadow-control-raised;
+$linux-button-pressed-shadow: $linux-border-pressed;
+$linux-button-disabled-background: $color-white;
+$linux-button-disabled-text: $linux-color-disabled;
+$linux-button-disabled-border: none;
+$linux-button-disabled-shadow: $linux-shadow-control-raised;
+$linux-button-disabled-text-shadow: none;
+$linux-button-disabled-opacity: .8;
+$linux-button-hover-enabled: true;
+$linux-button-transition: none;
 
 // WRAPPER
 $wrapper: 1512px;
