@@ -1,25 +1,78 @@
-@use '../../Settings/variables' as *;
 @use '../../Settings/os_themes';
-@use '../../Tools/mixins';
 
 .a_Control {
-   @include os_themes.themed(box-shadow, shadow, control-raised);
+   @include os_themes.themed(width, space, control-width);
+   @include os_themes.themed(height, space, control-height);
+   @include os_themes.themed(border-radius, control, radius);
+   @include os_themes.themed(background, control, background);
+   @include os_themes.themed(border, control, border);
+   @include os_themes.themed(box-shadow, control, shadow);
 
-   width: 16px;
-   height: 16px;
-   padding: 0;
-   @include os_themes.themed(background-color, color, control);
+   appearance: none;
    display: flex;
-   justify-content: center;
+   flex: none;
    align-items: center;
+   justify-content: center;
+   padding: 0;
    cursor: pointer;
 
-   &:active {
-      @include mixins.border-sunken;
+   &_close {
+      @include os_themes.themed(background, control, close-background);
+      @include os_themes.themed(border, control, close-border);
+      @include os_themes.themed(box-shadow, control, close-shadow);
+   }
+
+   &:focus-visible {
+      @include os_themes.themed(background, control, focus-background);
+      @include os_themes.themed(border, control, focus-border);
+      @include os_themes.themed(box-shadow, control, focus-shadow);
+      @include os_themes.themed(outline, control, focus-outline);
+      outline-offset: 1px;
+   }
+
+   &_close:focus-visible {
+      @include os_themes.themed(background, control, close-background);
+      @include os_themes.themed(border, control, close-border);
+      @include os_themes.themed(box-shadow, control, close-shadow);
+   }
+
+   &:active:not(:disabled) {
+      @include os_themes.themed(background, control, pressed-background);
+      @include os_themes.themed(border, control, pressed-border);
+      @include os_themes.themed(box-shadow, control, pressed-shadow);
+   }
+
+   &_close:active:not(:disabled) {
+      @include os_themes.themed(background, control, close-pressed-background);
+      @include os_themes.themed(border, control, close-pressed-border);
+      @include os_themes.themed(box-shadow, control, close-pressed-shadow);
    }
 
    &_icon {
-      width: 10px;
-      height: 10px;
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+   }
+
+   @each $os, $theme in os_themes.$os-themes {
+      @if os_themes.os-token($os, control, hover-enabled) {
+         @at-root [data-os='#{$os}'] #{&}:hover:not(:disabled):not(:focus-visible):not(:active) {
+            background: os_themes.os-token($os, control, hover-background);
+            border: os_themes.os-token($os, control, hover-border);
+            box-shadow: os_themes.os-token($os, control, hover-shadow);
+         }
+
+         @at-root [data-os='#{$os}'] #{&}_close:hover:not(:disabled):not(:focus-visible):not(:active) {
+            background: os_themes.os-token($os, control, close-hover-background);
+            border: os_themes.os-token($os, control, close-hover-border);
+            box-shadow: os_themes.os-token($os, control, close-hover-shadow);
+         }
+      }
+
+      @at-root [data-os='#{$os}'] .m_TitleBar_unfocus #{&} {
+         opacity: os_themes.os-token($os, control, inactive-opacity);
+      }
    }
 }

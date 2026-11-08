@@ -36,7 +36,13 @@ const TitleBar: FC<TitleBarProps> = ({
       aria-label={`Drag ${title} window`}
     >
       <span className={`${componentsClass}_title`}>
-        <Image src={icon} alt={title} width={16} height={16} />
+        <Image
+          className={`${componentsClass}_icon`}
+          src={icon}
+          alt=''
+          width={16}
+          height={16}
+        />
         {title}
       </span>
       {controls && (
